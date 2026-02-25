@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Michael Kai · AI Classes</title>
+  <meta name="description" content="Common questions about live AI classes for adults and retirees. Find answers about what to expect, safety, privacy, and how to get started." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://michael-kai.com/faq.html" />
+  <meta property="og:title" content="FAQ — Michael Kai · AI Classes" />
+  <meta property="og:description" content="Common questions about live AI classes for adults and retirees. Find answers about what to expect, safety, privacy, and how to get started." />
+  <meta property="og:url" content="https://michael-kai.com/faq.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
+    :root{
+      --bg: #f7f0e6;
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
+      --border: rgba(0,0,0,.10);
+      --wash: #f1e5d7;
+
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      --max: 1100px;
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    a:focus-visible, button:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
+    }
+
+    .skip{
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
+    }
+    .skip:focus{ transform:translateY(0); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 90px; }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); text-decoration:none; }
+    .btn:active{ transform:translateY(0); }
+
+    .btn--primary{
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
+    }
+    .btn--primary:hover{ background:var(--accentHover); }
+
+    .muted{ color:var(--muted); }
+
+    h1{
+      font-family:var(--display);
+      font-size:clamp(30px, 4.2vw, 46px);
+      line-height:1.05;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:26px;
+      line-height:1.15;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    p{ margin:0; }
+
+    /* ===========================
+       NAV / HEADER
+       =========================== */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(247,240,230,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    nav.primaryNav{
+      display: none;
+      align-items: center;
+      gap: 18px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      color: rgba(0,0,0,.80);
+    }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
+    }
+    .mobileActions .btn{ width: 100%; }
+
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    .overlay{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
+
+    /* ===========================
+       FAQ PAGE
+       =========================== */
+    .pageHero{
+      margin-top: 18px;
+      padding: 18px;
+    }
+    .pageHeroBody{
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 16.5px;
+      line-height: 1.85;
+    }
+
+    .sectionRow{
+      display:flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 26px 0 14px;
+    }
+    .sectionSub{ margin-top: 6px; color: var(--muted); font-size: 14.5px; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 10px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      color: rgba(0,0,0,.72);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    details{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{ cursor: pointer; font-weight: 850; list-style: none; }
+    summary::-webkit-details-marker{ display: none; }
+    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
+
+    .ctaBox{
+      text-align: center;
+      padding: 28px 18px;
+    }
+    .ctaBox p{
+      color: var(--muted);
+      font-size: 16.5px;
+      margin-bottom: 14px;
+    }
+    .ctaRow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <header class="siteHeader">
+    <div class="navBar">
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes · live &amp; online</div>
+        </div>
+      </a>
+
+      <nav class="primaryNav" aria-label="Primary">
+        <a class="navLink" href="get-started.html">Get started</a>
+        <a class="navLink" href="index.html">Overview</a>
+        <a class="navLink" href="faq.html" aria-current="page">FAQ</a>
+        <a class="navLink" href="privacy.html">Privacy</a>
+        <a class="navLink" href="terms.html">Terms</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book a class</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html">Get started</a>
+          <a href="index.html">Overview</a>
+          <a href="faq.html" aria-current="page">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="content" tabindex="-1">
+    <!-- PAGE HERO -->
+    <section class="card pageHero" aria-label="FAQ introduction">
+      <h1>Frequently asked questions</h1>
+      <p class="pageHeroBody">Everything people ask before their first class — and a few things they wish they'd asked sooner.</p>
+    </section>
+
+    <!-- BEFORE YOU START -->
+    <div class="sectionRow">
+      <div>
+        <h2>Before you start</h2>
+        <div class="sectionSub">You don't need experience. Just curiosity.</div>
+      </div>
+      <span class="badge">4 questions</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="Before you start">
+      <details>
+        <summary>What if I've never used AI before?</summary>
+        <p>You're in good company. Some students have never tried AI. Others have used it a few times but want to get more out of it. Either way, the class meets you where you are.</p>
+      </details>
+
+      <details>
+        <summary>I've tried AI and found it confusing — is this different?</summary>
+        <p>You're not alone — and it's not you. Most people open AI, try a question or two, and think <em>that's it?</em> The difference in class is that we walk through how to actually work with it — not just type into it.</p>
+      </details>
+
+      <details>
+        <summary>What if I'm not very comfortable with computers?</summary>
+        <p>You don't need to be a tech expert — but you should be comfortable with basics like using the internet, typing, and joining a video call. If you found this page, you're probably already there. If you're not quite sure, a one-on-one session is a great way to start — we can take things at whatever pace feels right.</p>
+      </details>
+
+      <details>
+        <summary>What if I feel embarrassed to ask questions?</summary>
+        <p>A lot of people feel that way — and one reason classes are small. With just a few people in the room, there's no spotlight and no pressure to perform. You're also welcome to just listen and follow along. Most people find that once they see others asking the same kinds of questions, it gets easier.</p>
+      </details>
+    </section>
+
+    <!-- WHAT YOU'LL LEARN -->
+    <div class="sectionRow">
+      <div>
+        <h2>What you'll learn</h2>
+        <div class="sectionSub">What to expect — and what to bring.</div>
+      </div>
+      <span class="badge">5 questions</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="What you'll learn">
+      <details>
+        <summary>What kinds of things can AI help with?</summary>
+        <p>The short answer: more than you'd expect. Yes, it can help with everyday things — writing a message you've been putting off, comparing Medicare supplement plans, making sense of a legal document. But that's not the interesting part. AI lets you take on things you'd normally hand off, skip, or never think to try — like researching a health question before a doctor's appointment, understanding how your retirement account actually works, or finally thinking through a decision that's been nagging at you. Most people leave their first class with a longer list of ideas than they came in with.</p>
+      </details>
+
+      <details>
+        <summary>What will I be able to do after one class?</summary>
+        <p>You'll know your way around the app, have a feel for how to talk to AI to get useful results, and — perhaps most importantly — you'll start seeing places in your own life where it could help. The goal isn't just learning a tool. It's learning a new way to think about what's possible.</p>
+      </details>
+
+      <details>
+        <summary>Is one class enough, or will I need several?</summary>
+        <p>One class is enough to get started and leave with something useful. Some people take one session, go explore on their own, and come back when they have new questions. Others like the structure of a few sessions in a row. There's no program to complete — you come back when it's useful to you.</p>
+      </details>
+
+      <details>
+        <summary>Can I bring a specific project or question?</summary>
+        <p>Absolutely — especially in one-on-one sessions, where the whole hour is shaped around you. In group classes, there's room for individual questions too. If you've got something specific you want to try with AI, bring it. That's often where the best learning happens.</p>
+      </details>
+
+      <details>
+        <summary>Will I get something to take away — notes, next steps?</summary>
+        <p>Yes. You'll have clear next steps and reference material you can come back to afterward — so you're not relying on memory.</p>
+      </details>
+    </section>
+
+    <!-- SAFETY & PRIVACY -->
+    <div class="sectionRow">
+      <div>
+        <h2>Safety &amp; privacy</h2>
+        <div class="sectionSub">Your information stays yours.</div>
+      </div>
+      <span class="badge">1 question</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="Safety and privacy">
+      <details>
+        <summary>Is this safe and private?</summary>
+        <p>Yes. We'll talk through how to think about what you share with AI — what's low-risk, what deserves more caution, and how to adjust your privacy settings. There's no single rule that fits everyone, but you'll leave with a clear sense of where your own comfort level is.</p>
+      </details>
+    </section>
+
+    <!-- LOGISTICS -->
+    <div class="sectionRow">
+      <div>
+        <h2>Logistics</h2>
+        <div class="sectionSub">The practical details.</div>
+      </div>
+      <span class="badge">4 questions</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="Logistics">
+      <details>
+        <summary>What do I need for class?</summary>
+        <p>A computer or tablet with a web browser, a reliable internet connection, and about an hour. Class happens over video call using Microsoft Teams — no account or download needed. I'll send you a link beforehand. One click to join.</p>
+      </details>
+
+      <details>
+        <summary>Do I need a paid AI account? Which app should I use?</summary>
+        <p>No — the free versions work well. I teach with ChatGPT, but Claude and Google Gemini are both great and work similarly. In class, we'll cover when upgrading to a paid plan makes sense and touch on the pros and cons of each. You'll find download links on the Get Started page.</p>
+      </details>
+
+      <details>
+        <summary>Group or one-on-one — how do I choose?</summary>
+        <p>The group class is great if you want to learn alongside others — you'll pick up ideas from their questions too. One-on-one is ideal if you have a specific goal, prefer your own pace, or want help getting set up. Not sure? Most people go with their gut — there's no wrong choice here.</p>
+      </details>
+
+      <details>
+        <summary>Can I reschedule or cancel?</summary>
+        <p>Yes. Life happens. If you need to reschedule, just let me know at least 24 hours beforehand and we'll find another time. If you need to cancel, I'm happy to refund you — same 24-hour notice.</p>
+      </details>
+    </section>
+
+    <!-- CTA -->
+    <section class="card" style="margin-top:26px;" aria-label="Next steps">
+      <div class="ctaBox">
+        <p>Still have questions? Get in touch.</p>
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot" role="contentinfo" aria-label="Footer">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="get-started.html">Get started</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="design-system.html">Design system</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Mobile menu behavior (accessible: aria + focus trapping + Escape close)
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

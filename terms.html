@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — Michael Kai</title>
+  <meta name="description" content="Terms of service for Michael Kai — live AI classes for adults." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://michael-kai.com/terms.html" />
+  <meta property="og:title" content="Terms of Service — Michael Kai" />
+  <meta property="og:description" content="Terms of service for Michael Kai — live AI classes for adults." />
+  <meta property="og:url" content="https://michael-kai.com/terms.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
+    :root{
+      --bg: #f7f0e6;
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
+      --border: rgba(0,0,0,.10);
+      --wash: #f1e5d7;
+
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      --max: 1100px;
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    a:focus-visible, button:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
+    }
+
+    .skip{
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
+    }
+    .skip:focus{ transform:translateY(0); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 90px; }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); }
+    .btn:active{ transform:translateY(0); }
+
+    .btn--primary{
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
+    }
+    .btn--primary:hover{ background:var(--accentHover); }
+
+    .muted{ color:var(--muted); }
+
+    h1{
+      font-family:var(--display);
+      font-size:clamp(28px, 3.9vw, 40px);
+      line-height:1.08;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:26px;
+      line-height:1.15;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h3{
+      font-family:var(--body);
+      font-size:14px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:850;
+      color:rgba(0,0,0,.75);
+      margin:0;
+    }
+    p{ margin:0; }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    /* ===========================
+       NAV / HEADER
+       =========================== */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(247,240,230,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    nav.primaryNav{
+      display: none;
+      align-items: center;
+      gap: 18px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      color: rgba(0,0,0,.80);
+    }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
+    }
+    .mobileActions .btn{ width: 100%; }
+
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    .overlay{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
+
+    /* ===========================
+       PAGE + LONGFORM PROSE
+       =========================== */
+    .page{ padding-top: 18px; }
+
+    .pageHeader{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.45);
+    }
+    .kicker{
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.70);
+      margin-bottom: 8px;
+    }
+
+    .contentCard{ margin-top: 14px; padding: 18px; }
+
+    .prose{
+      max-width: 74ch;
+      font-size: 16.5px;
+      line-height: 1.85;
+    }
+    .prose > * + *{ margin-top: 14px; }
+    .prose h2{ margin-top: 22px; }
+    .prose h3{ margin-top: 18px; }
+
+    .prose p{ color: rgba(0,0,0,.72); }
+    .prose p strong{ color: rgba(0,0,0,.86); }
+
+    .prose a{ text-decoration: underline; text-underline-offset: 3px; }
+    .prose a:hover{ text-decoration-thickness: 2px; }
+
+    .prose ul{
+      padding-left: 20px;
+      color: rgba(0,0,0,.72);
+    }
+    .prose li{ margin: 8px 0; }
+
+    .prose hr{
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .callout{
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+    .fineprint{
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .toc{
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+    .toc a{ text-decoration: none; }
+    .toc a:hover{ text-decoration: underline; }
+    .toc li{ margin: 3px 0; }
+
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <header class="siteHeader">
+    <div class="navBar">
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes · live &amp; online</div>
+        </div>
+      </a>
+
+      <nav class="primaryNav" aria-label="Primary">
+        <a class="navLink" href="get-started.html">Get started</a>
+        <a class="navLink" href="index.html">Overview</a>
+        <a class="navLink" href="faq.html">FAQ</a>
+        <a class="navLink" href="privacy.html">Privacy</a>
+        <a class="navLink" href="terms.html" aria-current="page">Terms</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book a class</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html">Get started</a>
+          <a href="index.html">Overview</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html" aria-current="page">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="#offerings">See pricing</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page" id="content" tabindex="-1">
+    <section class="pageHeader">
+      <div class="kicker">Policy</div>
+      <h1>Terms of Service</h1>
+      <p class="muted" style="margin-top:10px; max-width: 80ch;">
+        These terms set expectations for booking and attending live AI classes.
+      </p>
+      <p class="fineprint" style="margin-top:10px;">
+        <strong>Last updated:</strong> <span id="lastUpdated">February 18, 2026</span>
+      </p>
+    </section>
+
+    <section class="card contentCard" aria-label="Terms content">
+      <article class="prose">
+        <div class="toc" aria-label="Table of contents">
+          <h3 style="margin:0 0 8px;">On this page</h3>
+          <ul style="margin:0; padding-left:18px;">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#booking">Booking and rescheduling</a></li>
+            <li><a href="#cancellations">Cancellations and refunds</a></li>
+            <li><a href="#conduct">Conduct</a></li>
+            <li><a href="#disclaimers">Disclaimers</a></li>
+            <li><a href="#liability">Limitation of liability</a></li>
+            <li><a href="#changes">Changes to these terms</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <h2 id="overview">Overview</h2>
+        <p>
+          By booking or attending a session, you agree to these Terms of Service.
+          The goal is a smooth, respectful learning experience for everyone.
+        </p>
+
+        <h2 id="services">Services</h2>
+        <p>
+          Sessions are live online lessons held on Microsoft Teams, focused on practical AI skills.
+          Sessions may cover tools like ChatGPT, Gemini, Claude, and others — along with related workflows like email, documents, planning, and safety habits.
+        </p>
+
+        <div class="callout">
+          <h3 style="margin-bottom:8px;">What this is (and isn’t)</h3>
+          <ul style="margin:0; padding-left:18px;">
+            <li><strong>Yes:</strong> patient instruction, step-by-step guidance, practical outcomes.</li>
+            <li><strong>No:</strong> legal, medical, or financial advice.</li>
+          </ul>
+        </div>
+
+        <h2 id="pricing">Pricing</h2>
+        <p>
+          Current pricing (per session):
+        </p>
+        <ul>
+          <li><strong>Small group (2–4 people):</strong> $35 per person</li>
+          <li><strong>One-on-one:</strong> $60</li>
+        </ul>
+        <p class="fineprint">
+          Pricing may change over time. The price shown at booking is the price you pay.
+        </p>
+
+        <h2 id="booking">Booking and rescheduling</h2>
+        <p>
+          When you book, you’re reserving a time slot. If you need to reschedule, please do so at least 24 hours in advance.
+        </p>
+        <ul>
+          <li>If you’re having technical issues before a session, reach out and we’ll sort it out.</li>
+        </ul>
+
+        <h2 id="cancellations">Cancellations and refunds</h2>
+        <p>
+          Because this is a small service, missed sessions can be difficult to fill. I aim to be fair about it, while protecting the schedule.
+        </p>
+        <ul>
+          <li><strong>24 hours or more:</strong> You can reschedule or receive a full refund.</li>
+          <li><strong>Less than 24 hours:</strong> The session is forfeited. No refund or reschedule.</li>
+          <li><strong>No-shows:</strong> The session is forfeited. No refund or reschedule.</li>
+        </ul>
+
+        <h2 id="conduct">Conduct</h2>
+        <p>
+          Please be respectful — that includes patience with technology and civil communication.
+          I reserve the right to end a session if behavior becomes disruptive or abusive.
+        </p>
+
+        <h2 id="disclaimers">Disclaimers</h2>
+        <p>
+          AI tools can make mistakes. You’re responsible for how you use their outputs.
+          I can help you build safer habits, but I can’t guarantee accuracy or outcomes.
+        </p>
+
+        <h2 id="liability">Limitation of liability</h2>
+        <p>
+          To the fullest extent permitted by law, I am not liable for indirect or consequential damages
+          arising from your use of the service or AI tools.
+        </p>
+
+        <h2 id="changes">Changes to these terms</h2>
+        <p>
+          I may update these terms from time to time. When I do, I’ll update the date at the top of this page. Continued use of the service after changes means you accept the updated terms.
+        </p>
+
+        <h2 id="contact">Contact</h2>
+        <p>
+          Questions about these terms:
+        </p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:michael@mrkai.net">michael@mrkai.net</a></li>
+        </ul>
+      </article>
+
+      <div class="foot" role="contentinfo" aria-label="Footer">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="get-started.html">Get started</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="design-system.html">Design system</a>
+      </div>
+    </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Mobile menu behavior
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

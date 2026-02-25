@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nav Demo — Michael Kai</title>
+  <meta name="description" content="Accessible header + navigation (desktop + mobile) for the Quiet Luxury site." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="robots" content="noindex" />
+
+  <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
+    :root{
+      --bg: #f7f0e6;
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
+      --border: rgba(0,0,0,.10);
+      --wash: #f1e5d7;
+
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      --max: 1100px;
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    a:focus-visible, button:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
+    }
+
+    .skip{
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
+    }
+    .skip:focus{ transform:translateY(0); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 18px 18px 90px; }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+    }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); text-decoration:none; }
+    .btn:active{ transform:translateY(0); }
+
+    .btn--primary{
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
+    }
+    .btn--primary:hover{ background:var(--accentHover); }
+
+    .muted{ color:var(--muted); }
+
+    h1{
+      font-family:var(--display);
+      font-size:clamp(28px, 3.8vw, 38px);
+      line-height:1.1;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:24px;
+      line-height:1.2;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    p{ margin:0; }
+
+    .rule{ height:1px; background:var(--border); margin:18px 0; }
+
+    /* ===========================
+       NAV / HEADER
+       =========================== */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(247,240,230,.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    /* Desktop links */
+    nav.primaryNav{
+      display: none; /* shown at >= 860px */
+      align-items: center;
+      gap: 18px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    /* Right-side actions */
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Mobile menu button */
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    /* Mobile panel */
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      color: rgba(0,0,0,.80);
+    }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
+    }
+    .mobileActions .btn{ width: 100%; }
+
+    /* Desktop breakpoint */
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    /* Demo content layout */
+    .hero{
+      margin-top: 20px;
+      padding: 18px;
+    }
+    .heroInner{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.45);
+    }
+    .kicker{
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.70);
+      margin-bottom: 8px;
+    }
+
+    .grid2{
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1fr 1fr;
+      align-items:start;
+      margin-top: 14px;
+    }
+    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+
+    /* Overlay for mobile panel (optional, subtle) */
+    .overlay{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <!-- Subtle overlay to close menu when clicking outside -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <header class="siteHeader">
+    <div class="navBar">
+      <!-- Logo/wordmark placeholder -->
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes for seniors</div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="primaryNav" aria-label="Primary">
+        <a class="navLink" href="get-started.html">Get started</a>
+        <a class="navLink" href="index.html">Overview</a>
+        <a class="navLink" href="privacy.html">Privacy</a>
+        <a class="navLink" href="terms.html">Terms</a>
+      </nav>
+
+      <!-- Actions + mobile button -->
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book / Start →</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html">Get started</a>
+          <a href="index.html">Overview</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book / Start →</a>
+          <a class="btn" href="index.html">Back to homepage</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="content" tabindex="-1">
+    <section class="card hero">
+      <div class="heroInner">
+        <div class="kicker">Navigation demo</div>
+        <h1>Accessible header + nav (desktop + mobile)</h1>
+        <p class="muted" style="margin-top:10px; max-width: 75ch;">
+          This file demonstrates the shared header pattern you’ll reuse across all pages.
+          On desktop, links are visible in the header. On mobile, an accessible menu opens/closes with a button,
+          supports keyboard use, and closes with Escape or by clicking the dim overlay.
+        </p>
+
+        <div class="grid2">
+          <div class="card" style="padding:14px; background: rgba(255,252,247,.70); border:1px solid var(--border); border-radius: var(--radius); box-shadow:none;">
+            <h2>What to test</h2>
+            <div class="rule"></div>
+            <p class="muted">
+              1) Desktop: widen window ≥ <code>860px</code> — links appear, hamburger disappears.<br/>
+              2) Mobile: narrow window — hamburger appears, links hide, menu opens/closes.<br/>
+              3) Keyboard: press <code>Tab</code> to reach menu button, press <code>Enter</code> to open, then tab through links.<br/>
+              4) Close: press <code>Esc</code> or click outside on the dim overlay.
+            </p>
+          </div>
+
+          <div class="card" style="padding:14px; background: rgba(255,252,247,.70); border:1px solid var(--border); border-radius: var(--radius); box-shadow:none;">
+            <h2>Notes</h2>
+            <div class="rule"></div>
+            <p class="muted">
+              The logo/wordmark is a placeholder (<code>MK</code> + “Michael Kai”).
+              You can swap it later without changing layout.
+              All colors, borders, and type styles match your design-system tokens.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+
+        // Move focus to first link inside panel for keyboard users
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+
+        // Return focus to the button
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      // Escape closes menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      // Basic focus trap while open (mobile)
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      // Close menu if user resizes to desktop
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          // Close without stealing focus (desktop)
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

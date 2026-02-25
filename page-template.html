@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page Template — Michael Kai</title>
+  <meta name="description" content="Reusable page layout with shared header/footer + content container (Quiet Luxury)." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="robots" content="noindex" />
+
+  <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
+    :root{
+      --bg: #f7f0e6;
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
+      --border: rgba(0,0,0,.10);
+      --wash: #f1e5d7;
+
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      --max: 1100px;
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
+    }
+
+    .skip{
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
+    }
+    .skip:focus{ transform:translateY(0); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 90px; }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); }
+    .btn:active{ transform:translateY(0); }
+
+    .btn--primary{
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
+    }
+    .btn--primary:hover{ background:var(--accentHover); }
+
+    .muted{ color:var(--muted); }
+    .rule{ height:1px; background:var(--border); margin:18px 0; }
+
+    h1{
+      font-family:var(--display);
+      font-size:clamp(28px, 3.9vw, 40px);
+      line-height:1.08;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:24px;
+      line-height:1.2;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h3{
+      font-family:var(--body);
+      font-size:14px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:850;
+      color:rgba(0,0,0,.75);
+      margin:0;
+    }
+    p{ margin:0; }
+
+    /* ===========================
+       NAV / HEADER (same pattern as nav-demo)
+       =========================== */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(247,240,230,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    nav.primaryNav{
+      display: none;
+      align-items: center;
+      gap: 18px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      color: rgba(0,0,0,.80);
+    }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
+    }
+    .mobileActions .btn{ width: 100%; }
+
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    .overlay{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
+
+    /* ===========================
+       PAGE LAYOUT
+       =========================== */
+    .page{
+      padding-top: 18px;
+    }
+
+    .pageHeader{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.45);
+    }
+    .kicker{
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.70);
+      margin-bottom: 8px;
+    }
+
+    .contentCard{
+      margin-top: 14px;
+      padding: 18px;
+    }
+
+    .prose{
+      max-width: 78ch;
+    }
+    .prose p{ margin-top: 12px; }
+    .prose p:first-of-type{ margin-top: 0; }
+
+    .asideBox{
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+
+    .grid2{
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1.4fr .9fr;
+      align-items:start;
+    }
+    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } }
+
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <header class="siteHeader">
+    <div class="navBar">
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes · live &amp; online</div>
+        </div>
+      </a>
+
+      <nav class="primaryNav" aria-label="Primary">
+        <!-- Tip: add aria-current="page" to the active link on each page -->
+        <a class="navLink" href="get-started.html">Get started</a>
+        <a class="navLink" href="index.html">Overview</a>
+        <a class="navLink" href="faq.html">FAQ</a>
+        <a class="navLink" href="privacy.html">Privacy</a>
+        <a class="navLink" href="terms.html">Terms</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book a class</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html">Get started</a>
+          <a href="index.html">Overview</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="index.html#offerings">See pricing</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main class="wrap page" id="content" tabindex="-1">
+    <section class="pageHeader">
+      <div class="kicker">Reusable template</div>
+      <h1>Page Title Goes Here</h1>
+      <p class="muted" style="margin-top:10px; max-width: 80ch;">
+        This is the standard page shell: shared header + content container + simple footer.
+        Replace the title, kicker, and the content blocks below.
+      </p>
+    </section>
+
+    <section class="card contentCard" aria-label="Page content">
+      <div class="grid2">
+        <div class="prose">
+          <h2 style="margin-bottom: 8px;">Main content</h2>
+          <p class="muted">
+            Use this template for pages like <code>privacy.html</code>, <code>terms.html</code>, <code>get-started.html</code>,
+            and any future supporting pages.
+          </p>
+
+          <p>
+            Keep paragraphs short and readable. Prefer plain language. Avoid walls of text.
+            When you need long legal-style pages, we’ll use the separate long-form typography file.
+          </p>
+
+          <div class="rule"></div>
+
+          <h3 style="margin-bottom: 8px;">Example: pricing reference</h3>
+          <p class="muted">
+            Small group (2–4): <strong>$35 per person</strong> · One-on-one: <strong>$60</strong>
+          </p>
+
+          <div style="margin-top:14px;">
+            <a class="btn btn--primary" href="get-started.html">Primary action →</a>
+            <a class="btn" href="index.html">Secondary link</a>
+          </div>
+        </div>
+
+        <aside class="asideBox" aria-label="Sidebar">
+          <h3>Sidebar</h3>
+          <p class="muted" style="margin-top:10px;">
+            Optional: use for contact details, short checklists, or a calm “next step” box.
+          </p>
+
+          <div class="rule"></div>
+
+          <p class="muted" style="font-size: 14.5px;">
+            Tip: Keep sidebars short. If it becomes long, move it into the main content.
+          </p>
+
+          <div style="margin-top: 12px;">
+            <a class="btn btn--primary" href="get-started.html" style="width:100%;">Get started →</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="foot" role="contentinfo" aria-label="Footer">
+        <div>© <span id="y"></span> Michael Kai</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="get-started.html">Get started</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="design-system.html">Design system</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Mobile menu behavior (same as nav-demo)
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get Started — Michael Kai</title>
+  <meta name="description" content="Simple checklist and official download links to get ready for a first AI lesson." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://michael-kai.com/get-started.html" />
+  <meta property="og:title" content="Get Started — Michael Kai" />
+  <meta property="og:description" content="Simple checklist and official download links to get ready for a first AI lesson." />
+  <meta property="og:url" content="https://michael-kai.com/get-started.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
+    :root{
+      --bg: #f7f0e6;
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
+      --border: rgba(0,0,0,.10);
+      --wash: #f1e5d7;
+
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      --max: 1100px;
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    a:focus-visible, button:focus-visible, input:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
+    }
+
+    .skip{
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
+    }
+    .skip:focus{ transform:translateY(0); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 90px; }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); text-decoration:none; }
+    .btn:active{ transform:translateY(0); }
+
+    .btn--primary{
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
+    }
+    .btn--primary:hover{ background:var(--accentHover); }
+
+    .muted{ color:var(--muted); }
+    .rule{ height:1px; background:var(--border); margin:18px 0; }
+
+    h1{
+      font-family:var(--display);
+      font-size:clamp(28px, 3.9vw, 40px);
+      line-height:1.08;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:24px;
+      line-height:1.2;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h3{
+      font-family:var(--body);
+      font-size:14px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:850;
+      color:rgba(0,0,0,.75);
+      margin:0;
+    }
+    p{ margin:0; }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    /* ===========================
+       NAV / HEADER
+       =========================== */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(247,240,230,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    nav.primaryNav{
+      display: none;
+      align-items: center;
+      gap: 18px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      color: rgba(0,0,0,.80);
+    }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
+    }
+    .mobileActions .btn{ width: 100%; }
+
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    .overlay{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
+
+
+    .appRow{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+      transition: background .12s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .appRow:hover{
+      background: rgba(255,255,255,.82);
+      text-decoration: none;
+    }
+    .appIcon{
+      flex: 0 0 auto;
+      opacity: .7;
+    }
+    .appRow strong{
+      display: block;
+      color: rgba(0,0,0,.86);
+      line-height: 1.3;
+    }
+    .appDesc{
+      display: block;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-top: 2px;
+    }
+    .appList{
+      display: grid;
+      gap: 0;
+    }
+
+    /* ===========================
+       PAGE
+       =========================== */
+    .page{ padding-top: 18px; }
+
+    .pageHeader{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.45);
+    }
+    .kicker{
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.70);
+      margin-bottom: 8px;
+    }
+
+    .contentCard{ margin-top: 14px; padding: 18px; }
+
+    .grid2{
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items:start;
+    }
+    @media (max-width: 920px){ .grid2{ grid-template-columns: 1fr; } }
+
+    .checklist{
+      margin-top: 10px;
+      display:grid;
+      gap: 10px;
+    }
+
+    .checkItem{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+
+    .box{
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(0,0,0,.30);
+      background: rgba(255,255,255,.70);
+      flex: 0 0 auto;
+    }
+
+    .checkText strong{ color: rgba(0,0,0,.86); }
+    .checkText p{ color: rgba(0,0,0,.72); margin-top: 4px; }
+
+    .mini{
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .downloads{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .downloadRow{
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+
+    .downloadRow .rowTop{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .rowActions{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.70);
+    }
+
+    .hint{
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.58);
+      color: rgba(0,0,0,.72);
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+    .hint strong{ color: rgba(0,0,0,.82); }
+
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <header class="siteHeader">
+    <div class="navBar">
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes · live &amp; online</div>
+        </div>
+      </a>
+
+      <nav class="primaryNav" aria-label="Primary">
+        <a class="navLink" href="get-started.html" aria-current="page">Get started</a>
+        <a class="navLink" href="index.html">Overview</a>
+        <a class="navLink" href="faq.html">FAQ</a>
+        <a class="navLink" href="privacy.html">Privacy</a>
+        <a class="navLink" href="terms.html">Terms</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book a class</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html" aria-current="page">Get started</a>
+          <a href="index.html">Overview</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="#offerings">See pricing</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page" id="content" tabindex="-1">
+    <section class="pageHeader">
+      <div class="kicker">First session prep</div>
+      <h1>Get started</h1>
+      <p class="muted" style="margin-top:10px; max-width: 80ch;">
+        A short checklist so your first lesson feels unhurried. Nothing complicated — most of it takes just a few minutes.
+      </p>
+    </section>
+
+    <section class="card contentCard" aria-label="Get started content">
+      <div class="grid2">
+        <!-- Left: checklist -->
+        <div>
+          <h2>Checklist</h2>
+          <p class="mini" style="margin-top:8px;">
+            You don’t need to be a tech expert. If you can browse the web and join a video call, you’re ready. All you need is a device and an internet connection.
+          </p>
+
+          <div class="checklist" aria-label="Preparation checklist">
+            <div class="checkItem">
+              <div class="box" aria-hidden="true"></div>
+              <div class="checkText">
+                <strong>Have a device ready</strong>
+                <p>A computer or tablet works best — you’ll be watching my screen as we work. A smartphone will do, but a larger screen makes it easier to follow along.</p>
+              </div>
+            </div>
+
+            <div class="checkItem">
+              <div class="box" aria-hidden="true"></div>
+              <div class="checkText">
+                <strong>Join the Microsoft Teams meeting link</strong>
+                <p>
+                  I’ll email you a link before your session. Click it and choose <strong>“Continue on this browser”</strong> — that’s the easiest option. The Teams app also works if you prefer it.
+                </p>
+              </div>
+            </div>
+
+            <div class="checkItem">
+              <div class="box" aria-hidden="true"></div>
+              <div class="checkText">
+                <strong>Check microphone + speakers</strong>
+                <p>Headphones are optional, but can reduce echo. We can test audio in the first 2 minutes.</p>
+              </div>
+            </div>
+
+            <div class="checkItem">
+              <div class="box" aria-hidden="true"></div>
+              <div class="checkText">
+                <strong>Choose your AI tool (free)</strong>
+                <p>
+                  I teach with <strong>ChatGPT</strong>, but you’re welcome to use <strong>Claude</strong> or <strong>Gemini</strong> — they work the same way. If you don’t have an account yet, signing up is free and takes a minute or two. You’ll find official links on this page.
+                </p>
+              </div>
+            </div>
+
+            <div class="checkItem">
+              <div class="box" aria-hidden="true"></div>
+              <div class="checkText">
+                <strong>Join a few minutes early</strong>
+                <p>
+                  Joining a few minutes early gives us time to check your audio and get settled. The <strong>Chrome</strong> or <strong>Edge</strong> browser on a computer tends to work best.
+                </p>
+              </div>
+            </div>
+
+            <div class="checkItem">
+              <div class="box" aria-hidden="true"></div>
+              <div class="checkText">
+                <strong>Think about what you’d like to try</strong>
+                <p>No preparation needed — but if something comes to mind, bring it along. A problem you’ve been wrestling with, a trip you’re planning, something you’ve been curious about. We’ll use real examples in class either way.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <a class="btn btn--primary" href="index.html">Book a class</a>
+            <a class="btn" href="index.html">Back to homepage</a>
+          </div>
+        </div>
+
+        <!-- Right: what to expect + links -->
+        <aside aria-label="Session details and links">
+          <div style="padding:14px; border-radius: var(--radius); border: 1px solid var(--border); background: rgba(255,255,255,.55);">
+
+            <h3>What to expect</h3>
+            <p class="mini" style="margin-top:8px;">
+              Sessions run about 60 minutes. We start with a quick audio check, then jump in. You won’t be put on the spot — ask questions whenever they come up, or just follow along. You’ll leave with a few things you can repeat on your own.
+            </p>
+            <p class="mini" style="margin-top:10px;">
+              <strong>Pricing:</strong> $35 per person (small group, 2–4) · $60 (one-on-one)
+            </p>
+
+            <div class="rule"></div>
+
+            <h3>Joining your session</h3>
+            <p class="mini" style="margin-top:8px;">
+              You’ll join class through Microsoft Teams. Most people just click the link I send and open it in the browser — no app needed. If you’d rather have a dedicated app, the download is here. Either way works.
+            </p>
+
+
+            <a class="appRow" href="https://www.microsoft.com/en-us/microsoft-teams/download-app" target="_blank" rel="noopener">
+              <svg class="appIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M9.186 4.797a2.42 2.42 0 1 0-2.86-2.448h1.178c.929 0 1.682.753 1.682 1.682zm-4.295 7.738h2.613c.929 0 1.682-.753 1.682-1.682V5.58h2.783a.7.7 0 0 1 .682.716v4.294a4.197 4.197 0 0 1-4.093 4.293c-1.618-.04-3-.99-3.667-2.35Zm10.737-9.372a1.674 1.674 0 1 1-3.349 0 1.674 1.674 0 0 1 3.349 0m-2.238 9.488-.12-.002a5.2 5.2 0 0 0 .381-2.07V6.306a1.7 1.7 0 0 0-.15-.725h1.792c.39 0 .707.317.707.707v3.765a2.6 2.6 0 0 1-2.598 2.598z"/><path d="M.682 3.349h6.822c.377 0 .682.305.682.682v6.822a.68.68 0 0 1-.682.682H.682A.68.68 0 0 1 0 10.853V4.03c0-.377.305-.682.682-.682Zm5.206 2.596v-.72h-3.59v.72h1.357V9.66h.87V5.945z"/></svg>
+              <div>
+                <strong>Microsoft Teams</strong>
+                <span class="appDesc">Download or open in browser</span>
+              </div>
+            </a>
+
+            <div class="hint" role="note" aria-label="Simple note">
+              <strong>If you get stuck:</strong> Don’t troubleshoot alone. Join the session anyway — we’ll sort it out together.
+            </div>
+
+            <div class="rule"></div>
+
+            <h3>AI apps</h3>
+            <p class="mini" style="margin-top:8px;">
+              ChatGPT, Claude, and Gemini are the three leading AI apps. They’re all free, they all work similarly, and you can use any of them in a web browser. I teach with ChatGPT, but the skills you learn apply to all three.
+            </p>
+
+            <div class="appList" aria-label="AI app links">
+              <a class="appRow" href="https://chatgpt.com/" target="_blank" rel="noopener">
+                <svg class="appIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M14.949 6.547a3.94 3.94 0 0 0-.348-3.273 4.11 4.11 0 0 0-4.4-1.934A4.1 4.1 0 0 0 8.423.2 4.15 4.15 0 0 0 6.305.086a4.1 4.1 0 0 0-1.891.948 4.04 4.04 0 0 0-1.158 1.753 4.1 4.1 0 0 0-1.563.679A4 4 0 0 0 .554 4.72a3.99 3.99 0 0 0 .502 4.731 3.94 3.94 0 0 0 .346 3.274 4.11 4.11 0 0 0 4.402 1.933c.382.425.852.764 1.377.995.526.231 1.095.35 1.67.346 1.78.002 3.358-1.132 3.901-2.804a4.1 4.1 0 0 0 1.563-.68 4 4 0 0 0 1.14-1.253 3.99 3.99 0 0 0-.506-4.716m-6.097 8.406a3.05 3.05 0 0 1-1.945-.694l.096-.054 3.23-1.838a.53.53 0 0 0 .265-.455v-4.49l1.366.778q.02.011.025.035v3.722c-.003 1.653-1.361 2.992-3.037 2.996m-6.53-2.75a2.95 2.95 0 0 1-.36-2.01l.095.057L5.29 12.09a.53.53 0 0 0 .527 0l3.949-2.246v1.555a.05.05 0 0 1-.022.041L6.473 13.3c-1.454.826-3.311.335-4.15-1.098m-.85-6.94A3.02 3.02 0 0 1 3.07 3.949v3.785a.51.51 0 0 0 .262.451l3.93 2.237-1.366.779a.05.05 0 0 1-.048 0L2.585 9.342a2.98 2.98 0 0 1-1.113-4.094zm11.216 2.571L8.747 5.576l1.362-.776a.05.05 0 0 1 .048 0l3.265 1.86a3 3 0 0 1 1.173 1.207 2.96 2.96 0 0 1-.27 3.2 3.05 3.05 0 0 1-1.36.997V8.279a.52.52 0 0 0-.276-.445m1.36-2.015-.097-.057-3.226-1.855a.53.53 0 0 0-.53 0L6.249 6.153V4.598a.04.04 0 0 1 .019-.04L9.533 2.7a3.07 3.07 0 0 1 3.257.139c.474.325.843.778 1.066 1.303.223.526.289 1.103.191 1.664zM5.503 8.575 4.139 7.8a.05.05 0 0 1-.026-.037V4.049c0-.57.166-1.127.476-1.607s.752-.864 1.275-1.105a3.08 3.08 0 0 1 3.234.41l-.096.054-3.23 1.838a.53.53 0 0 0-.265.455zm.742-1.577 1.758-1 1.762 1v2l-1.755 1-1.762-1z"/></svg>
+                <div>
+                  <strong>ChatGPT</strong>
+                  <span class="appDesc">This is what I teach with — the most common starting point.</span>
+                </div>
+              </a>
+
+              <a class="appRow" href="https://claude.ai/" target="_blank" rel="noopener">
+                <svg class="appIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="m3.127 10.604 3.135-1.76.053-.153-.053-.085H6.11l-.525-.032-1.791-.048-1.554-.065-1.505-.08-.38-.081L0 7.832l.036-.234.32-.214.455.04 1.009.069 1.513.105 1.097.064 1.626.17h.259l.036-.105-.089-.065-.068-.064-1.566-1.062-1.695-1.121-.887-.646-.48-.327-.243-.306-.104-.67.435-.48.585.04.15.04.593.456 1.267.981 1.654 1.218.242.202.097-.068.012-.049-.109-.181-.9-1.626-.96-1.655-.428-.686-.113-.411a2 2 0 0 1-.068-.484l.496-.674L4.446 0l.662.089.279.242.411.94.666 1.48 1.033 2.014.302.597.162.553.06.17h.105v-.097l.085-1.134.157-1.392.154-1.792.052-.504.25-.605.497-.327.387.186.319.456-.045.294-.19 1.23-.37 1.93-.243 1.29h.142l.161-.16.654-.868 1.097-1.372.484-.545.565-.601.363-.287h.686l.505.751-.226.775-.707.895-.585.759-.839 1.13-.524.904.048.072.125-.012 1.897-.403 1.024-.186 1.223-.21.553.258.06.263-.218.536-1.307.323-1.533.307-2.284.54-.028.02.032.04 1.029.098.44.024h1.077l2.005.15.525.346.315.424-.053.323-.807.411-3.631-.863-.872-.218h-.12v.073l.726.71 1.331 1.202 1.667 1.55.084.383-.214.302-.226-.032-1.464-1.101-.565-.497-1.28-1.077h-.084v.113l.295.432 1.557 2.34.08.718-.112.234-.404.141-.444-.08-.911-1.28-.94-1.44-.759-1.291-.093.053-.448 4.821-.21.246-.484.186-.403-.307-.214-.496.214-.98.258-1.28.21-1.016.19-1.263.112-.42-.008-.028-.092.012-.953 1.307-1.448 1.957-1.146 1.227-.274.109-.477-.247.045-.44.266-.39 1.586-2.018.956-1.25.617-.723-.004-.105h-.036l-4.212 2.736-.75.096-.324-.302.04-.496.154-.162 1.267-.871z"/></svg>
+                <div>
+                  <strong>Claude</strong>
+                  <span class="appDesc">A strong alternative. If you already use it, bring it.</span>
+                </div>
+              </a>
+
+              <a class="appRow" href="https://gemini.google.com/" target="_blank" rel="noopener">
+                <svg class="appIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C12 0 12 11.5 0 12c12 .5 12 12 12 12s0-11.5 12-12C12 11.5 12 0 12 0z"/></svg>
+                <div>
+                  <strong>Gemini</strong>
+                  <span class="appDesc">Fits naturally if you already use Google services.</span>
+                </div>
+              </a>
+            </div>
+
+        </aside>
+      </div>
+
+      <div class="foot" role="contentinfo" aria-label="Footer">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="get-started.html">Get started</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="design-system.html">Design system</a>
+      </div>
+    </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Mobile menu behavior
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design System — Michael Kai</title>
+  <meta name="description" content="Quiet Luxury design tokens, typography, and component styles (HTML/CSS/JS only)." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="robots" content="noindex" />
+
+  <style>
+    /* ===========================
+       Michael Kai — Quiet Luxury
+       Design System (v0.1)
+       =========================== */
+
+    :root{
+      /* Color */
+      --bg: #f7f0e6;                 /* page background */
+      --ink: #1a1715;                /* primary text */
+      --muted: rgba(0,0,0,.65);      /* secondary text */
+      --panel: rgba(255,252,247,.78);/* elevated surface */
+      --surface: rgba(255,255,255,.55); /* soft surface */
+      --border: rgba(0,0,0,.10);     /* hairline */
+      --wash: #f1e5d7;               /* warm wash */
+
+      /* Accent */
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      /* Type */
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      /* Radius + shadows */
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      /* Layout */
+      --max: 1100px;
+
+      /* Focus ring */
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: var(--leading);
+      font-size: var(--bodySize);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    a:focus-visible{ outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
+
+    /* Skip link */
+    .skip{
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      transform: translateY(-160%);
+      transition: transform .18s ease;
+      z-index: 999;
+      font-weight: 700;
+    }
+    .skip:focus{ transform: translateY(0); }
+
+    /* Container */
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 90px; }
+
+    /* Headings */
+    h1,h2,h3{ margin: 0; letter-spacing: -0.02em; }
+    h1{
+      font-family: var(--display);
+      font-size: clamp(30px, 4vw, 40px);
+      line-height: 1.08;
+      font-weight: 750;
+    }
+    h2{
+      font-family: var(--display);
+      font-size: 26px;
+      line-height: 1.15;
+      font-weight: 750;
+    }
+    h3{
+      font-family: var(--body);
+      font-size: 14px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(0,0,0,.75);
+    }
+
+    p{ margin: 0; }
+    .muted{ color: var(--muted); }
+
+    .rule{
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    /* Surfaces */
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .cardPad{ padding: 18px; }
+
+    .soft{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    /* Header */
+    .top{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .sub{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14.5px;
+      max-width: 72ch;
+    }
+
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mark{
+      width: 40px; height: 40px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+    }
+    .brandSmall{
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    /* Buttons */
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      user-select: none;
+      min-height: 40px;
+      text-decoration: none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.82); text-decoration: none; }
+    .btn:active{ transform: translateY(0px); }
+    .btn:focus-visible{ outline: 3px solid var(--focus); outline-offset: 2px; }
+
+    .btn--primary{
+      background: var(--accentBg);
+      color: var(--accentInk);
+      border-color: rgba(0,0,0,.12);
+      box-shadow: var(--shadow2);
+    }
+    .btn--primary:hover{ background: var(--accentHover); }
+
+    .btn--ghost{
+      background: transparent;
+      border-color: var(--border);
+    }
+    .btn--ghost:hover{ background: rgba(255,255,255,.55); }
+
+    .btn--small{
+      padding: 8px 12px;
+      min-height: 36px;
+      font-size: 14px;
+    }
+
+    /* Tags */
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      color: rgba(0,0,0,.72);
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      color: rgba(0,0,0,.78);
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+
+    /* Lists */
+    .list{ margin: 0; padding-left: 18px; color: var(--muted); }
+    .list li{ margin: 8px 0; }
+
+    /* Details (FAQ) */
+    details{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+      outline: none;
+    }
+    summary::-webkit-details-marker{ display: none; }
+    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
+
+    /* Forms */
+    .field{ display: grid; gap: 6px; }
+    label{ font-weight: 800; font-size: 13px; letter-spacing: .01em; }
+    .help{ color: var(--muted); font-size: 12.5px; }
+
+    input, textarea, select{
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      color: var(--ink);
+      font: inherit;
+      line-height: 1.4;
+    }
+    textarea{ min-height: 110px; resize: vertical; }
+    input:focus-visible, textarea:focus-visible, select:focus-visible{
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Tables (simple) */
+    table{
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+    th, td{
+      padding: 12px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 14.5px;
+    }
+    th{
+      font-weight: 850;
+      color: rgba(0,0,0,.78);
+      background: rgba(255,255,255,.65);
+    }
+    tr:last-child td{ border-bottom: none; }
+
+    /* Layout helpers */
+    .stack{ display: grid; gap: 12px; }
+    .row{ display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .grid2{
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+    .grid3{
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    /* Notice box (like “note from Michael”) */
+    .noteBox{
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.50);
+    }
+    .avatar{
+      width: 54px; height: 54px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(0,0,0,.05));
+    }
+    .noteHdr{ font-weight: 850; font-size: 14px; margin: 0 0 2px; }
+    .noteMeta{ color: var(--muted); font-size: 12.5px; margin: 0 0 6px; }
+    .noteText{ color: var(--muted); font-size: 14px; margin: 0; }
+
+    /* Footer */
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+    }
+
+    /* Motion preference */
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* Tiny code-style token pill */
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    /* Color swatches */
+    .swatches{
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(6, 1fr);
+    }
+    @media (max-width: 900px){ .swatches{ grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 520px){ .swatches{ grid-template-columns: repeat(2, 1fr); } }
+
+    .swatch{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      overflow: hidden;
+      box-shadow: none;
+    }
+    .swatchColor{ height: 54px; }
+    .swatchBody{ padding: 10px 12px; }
+    .swatchName{ font-weight: 850; font-size: 13px; }
+    .swatchVal{ color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <main class="wrap" id="content">
+    <div class="top">
+      <div class="brand" aria-label="Brand placeholder">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div style="font-weight:850;">Michael Kai</div>
+          <div class="brandSmall">Design system (Quiet Luxury)</div>
+        </div>
+      </div>
+
+      <div class="row" aria-label="Quick actions">
+        <a class="btn btn--ghost btn--small" href="index.html">Back to homepage mockup</a>
+        <button class="btn btn--primary btn--small" type="button" id="copyTokens">Copy token list</button>
+      </div>
+    </div>
+
+    <p class="sub">
+      This page defines the shared CSS variables and component language for all supporting pages (privacy, terms, 404, etc.).
+      Everything here is HTML/CSS only, mobile-friendly, and intentionally restrained.
+    </p>
+
+    <div class="rule"></div>
+
+    <!-- TOKENS -->
+    <section class="card cardPad">
+      <h2>1) Tokens</h2>
+      <p class="muted" style="margin-top:6px;">
+        Keep these stable. Components should reference tokens (e.g., <code>var(--border)</code>) rather than hard-coded colors.
+      </p>
+
+      <div style="margin-top:14px;" class="swatches" aria-label="Color token swatches">
+        <div class="swatch">
+          <div class="swatchColor" style="background: var(--bg);"></div>
+          <div class="swatchBody">
+            <div class="swatchName">--bg</div>
+            <div class="swatchVal">#f7f0e6</div>
+          </div>
+        </div>
+
+        <div class="swatch">
+          <div class="swatchColor" style="background: var(--panel);"></div>
+          <div class="swatchBody">
+            <div class="swatchName">--panel</div>
+            <div class="swatchVal">rgba(255,252,247,.78)</div>
+          </div>
+        </div>
+
+        <div class="swatch">
+          <div class="swatchColor" style="background: var(--wash);"></div>
+          <div class="swatchBody">
+            <div class="swatchName">--wash</div>
+            <div class="swatchVal">#f1e5d7</div>
+          </div>
+        </div>
+
+        <div class="swatch">
+          <div class="swatchColor" style="background: var(--accentBg);"></div>
+          <div class="swatchBody">
+            <div class="swatchName">--accentBg</div>
+            <div class="swatchVal">#2b211d</div>
+          </div>
+        </div>
+
+        <div class="swatch">
+          <div class="swatchColor" style="background: #ffffff;"></div>
+          <div class="swatchBody">
+            <div class="swatchName">--accentInk</div>
+            <div class="swatchVal">#ffffff</div>
+          </div>
+        </div>
+
+        <div class="swatch">
+          <div class="swatchColor" style="background: var(--ink);"></div>
+          <div class="swatchBody">
+            <div class="swatchName">--ink</div>
+            <div class="swatchVal">#1a1715</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="soft" style="margin-top:14px; padding:14px;">
+        <div class="row" style="justify-content: space-between;">
+          <div>
+            <div style="font-weight:850;">Shape + rhythm</div>
+            <div class="muted" style="font-size:14.5px; margin-top:2px;">
+              <code>--radius</code> <span aria-hidden="true">→</span> card rounding &nbsp;&nbsp;·&nbsp;&nbsp;
+              <code>--btnRadius</code> <span aria-hidden="true">→</span> pill buttons &nbsp;&nbsp;·&nbsp;&nbsp;
+              <code>--shadow</code> <span aria-hidden="true">→</span> calm elevation
+            </div>
+          </div>
+          <span class="badge">Hairline-first</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- TYPOGRAPHY -->
+    <section class="card cardPad">
+      <h2>2) Typography</h2>
+      <p class="muted" style="margin-top:6px;">
+        Display serif for trust + calm authority; system sans for clarity and UI.
+      </p>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Headings</h3>
+          <div style="margin-top:10px;">
+            <div style="font-family:var(--display); font-size:40px; line-height:1.08; font-weight:750; letter-spacing:-0.02em;">
+              A calm, premium hierarchy
+            </div>
+            <div style="margin-top:10px; font-family:var(--display); font-size:26px; line-height:1.15; font-weight:750; letter-spacing:-0.02em;">
+              Section headline (H2)
+            </div>
+            <div style="margin-top:10px; font-weight:850; letter-spacing:.02em; text-transform:uppercase; font-size:14px; color:rgba(0,0,0,.75);">
+              Utility label (H3 style)
+            </div>
+          </div>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>Body</h3>
+          <p class="muted" style="margin-top:10px;">
+            Default body should read comfortably for older adults: generous line-height, restrained contrast, and no tiny text.
+          </p>
+          <p style="margin-top:12px; max-width:62ch;">
+            This is body text. It should feel clear and unhurried. Keep paragraphs short, prefer plain language, and
+            use emphasis sparingly so the page never feels “loud.”
+          </p>
+          <p class="muted" style="margin-top:12px; font-size:14.5px;">
+            Secondary text example (14.5px) for captions, helper copy, and footers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- COMPONENTS -->
+    <section class="card cardPad">
+      <h2>3) Components</h2>
+      <p class="muted" style="margin-top:6px;">Core UI pieces reused across pages.</p>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Buttons + links</h3>
+          <div class="row" style="margin-top:12px;">
+            <a class="btn btn--primary" href="#0">Primary action →</a>
+            <a class="btn" href="#0">Secondary</a>
+            <a class="btn btn--ghost" href="#0">Ghost</a>
+          </div>
+          <p class="muted" style="margin-top:10px; font-size:14.5px;">
+            Focus ring should be obvious with keyboard navigation. Hover is subtle; no flash.
+          </p>
+          <p style="margin-top:10px;">
+            Example text link: <a href="#0">Privacy policy</a>
+          </p>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>Badges + pills</h3>
+          <div class="row" style="margin-top:12px;">
+            <span class="badge">Secure by default</span>
+            <span class="badge">Teams-friendly</span>
+            <span class="pill">✓ Calm pacing</span>
+            <span class="pill">🔒 Privacy-first</span>
+          </div>
+          <p class="muted" style="margin-top:10px; font-size:14.5px;">
+            Use badges for metadata; use pills for benefits / short signals.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Cards</h3>
+          <div class="card cardPad" style="margin-top:12px;">
+            <div style="font-family:var(--display); font-size:20px; font-weight:750; letter-spacing:-0.02em;">Card title</div>
+            <p class="muted" style="margin-top:6px; font-size:14.5px;">
+              Use <code>.card</code> for elevated panels; keep borders hairline and shadows calm.
+            </p>
+            <div class="row" style="margin-top:12px;">
+              <a class="btn btn--small" href="#0">Learn more</a>
+              <a class="btn btn--primary btn--small" href="#0">Get started</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>“Note” box</h3>
+          <div class="noteBox" style="margin-top:12px;">
+            <div class="avatar" aria-label="Avatar placeholder"></div>
+            <div>
+              <p class="noteHdr">A note from Michael</p>
+              <p class="noteMeta">Patient instruction · High standards · No hype</p>
+              <p class="noteText">
+                This component is great for trust-building micro-copy that feels human without becoming salesy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- FORMS + CONTENT -->
+    <section class="card cardPad">
+      <h2>4) Content patterns</h2>
+      <p class="muted" style="margin-top:6px;">Forms, lists, tables, and FAQ details for supporting pages.</p>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Form fields</h3>
+          <div class="stack" style="margin-top:12px;">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+              <div class="help">Used only to reply. No mailing list by default.</div>
+            </div>
+
+            <div class="field">
+              <label for="topic">Topic</label>
+              <select id="topic">
+                <option>Getting started with ChatGPT</option>
+                <option>Using AI safely</option>
+                <option>Workflows (email, travel, documents)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="msg">Message</label>
+              <textarea id="msg" placeholder="A short note..."></textarea>
+            </div>
+
+            <div class="row">
+              <button class="btn btn--primary" type="button">Send →</button>
+              <button class="btn btn--ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>FAQ (details)</h3>
+          <div style="margin-top:12px;">
+            <details>
+              <summary>Do I need a paid ChatGPT account?</summary>
+              <p>No. We can start with whatever you have and choose the simplest option that fits your goals.</p>
+            </details>
+            <details>
+              <summary>Is this safe and private?</summary>
+              <p>We’ll cover what not to share, privacy basics, and practical “safe prompting” habits.</p>
+            </details>
+            <details>
+              <summary>Can you work with small groups?</summary>
+              <p>Yes — small groups (2–4) work well when everyone wants the same outcome.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Lists</h3>
+          <ul class="list" style="margin-top:12px;">
+            <li>Keep bullets short and concrete.</li>
+            <li>Default to plain language.</li>
+            <li>Use one idea per line.</li>
+          </ul>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>Table (simple)</h3>
+          <table style="margin-top:12px;" aria-label="Pricing table">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Price</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Small group (2–4)</td>
+                <td>$35 / person</td>
+                <td class="muted">Best for friends/couples learning together.</td>
+              </tr>
+              <tr>
+                <td>One-on-one</td>
+                <td>$60</td>
+                <td class="muted">Best for personalized goals and pacing.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div class="row" style="gap:16px;">
+        <a href="#0">Privacy</a>
+        <a href="#0">Terms</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // copy token list (handy when you start extracting a shared stylesheet)
+    const tokenText =
+`:root{
+  --bg: #f7f0e6;
+  --ink: #1a1715;
+  --muted: rgba(0,0,0,.65);
+  --panel: rgba(255,252,247,.78);
+  --surface: rgba(255,255,255,.55);
+  --border: rgba(0,0,0,.10);
+  --wash: #f1e5d7;
+
+  --accentBg: #2b211d;
+  --accentHover: #211815;
+  --accentInk: #ffffff;
+
+  --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+  --bodySize: 16px;
+  --leading: 1.75;
+
+  --radius: 22px;
+  --btnRadius: 999px;
+
+  --shadow: 0 10px 30px rgba(17,24,39,.08);
+  --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+  --max: 1100px;
+  --focus: rgba(17,24,39,.18);
+}`;
+
+    document.getElementById("copyTokens").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(tokenText);
+        const btn = document.getElementById("copyTokens");
+        const old = btn.textContent;
+        btn.textContent = "Copied ✓";
+        setTimeout(() => btn.textContent = old, 900);
+      }catch(e){
+        alert("Copy failed. You can manually select tokens in the source.");
+      }
+    });
+  </script>
+</body>
+</html>

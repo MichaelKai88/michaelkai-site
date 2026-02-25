@@ -1,25 +1,619 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Michael Kai — Practical AI Guidance</title>
-  </head>
-  <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
-    <section style="max-width: 600px; margin: 80px auto; padding: 0 20px;">
-      <h1 style="font-size: 2rem; line-height: 1.3; margin-bottom: 16px;">I help adults learn AI — calmly, practically, and without hype.</h1>
-      <p style="font-size: 1.1rem; line-height: 1.6; color: #444; margin-bottom: 24px;">One-on-one and small-group guidance for people who want to understand and actually use modern AI tools — no technical background required.</p>
-      <a href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener" style="display: inline-block; background: #111; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 4px;">Book a free 30-minute intro call</a>
-      <p style="margin-top: 24px;"><a href="mailto:michael@mrkai.net">Email me</a></p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Michael Kai — AI Classes for Thoughtful Adults</title>
+  <meta name="description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://michael-kai.com/" />
+  <meta property="og:title" content="Michael Kai — AI Classes for Thoughtful Adults" />
+  <meta property="og:description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <meta property="og:url" content="https://michael-kai.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Michael Kai — AI Classes for Thoughtful Adults" />
+  <meta name="twitter:description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+
+  <style>
+    :root{
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      /* quieter, more classic ivory */
+      --panel: rgba(255,253,249,.82);
+      --border: rgba(0,0,0,.10);
+      /* less birch/rose, more cream */
+      --wash: #F5EBDD;
+
+      --accentBg: #302420;
+      --accentHover: #241a16;
+      --accentInk: #ffffff;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+      --max: 1100px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: var(--leading);
+      /* classic cream baseline (matches Quiet Luxury default) */
+      background: #FAF6EF;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .under{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+
+    /* Cards / panels */
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .cardPad{ padding: 18px; }
+
+    .rule{
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      color: var(--ink);
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      user-select: none;
+      height: 40px;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.82); }
+    .btn:focus{ outline: 3px solid rgba(17,24,39,.18); outline-offset: 2px; }
+    .btn.primary{
+      background: var(--accentBg);
+      color: var(--accentInk);
+      border-color: rgba(0,0,0,.12);
+      box-shadow: var(--shadow2);
+    }
+    .btn.primary:hover{ background: var(--accentHover); }
+
+    /* Main nav bar */
+    .navRow{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mark{
+      width: 40px; height: 40px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brandSmall{
+      color: var(--muted);
+      font-size: 12.5px;
+      margin-top: 2px;
+    }
+    .navLinks{
+      display: none;
+      gap: 18px;
+      font-size: 14px;
+      color: rgba(0,0,0,.80);
+    }
+    .navLinks a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    @media (min-width: 880px){
+      .navLinks{ display: flex; }
+    }
+
+    /* Layout sections */
+    .gridHero{
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: start;
+      margin-top: 18px;
+    }
+    @media (max-width: 920px){
+      .gridHero{ grid-template-columns: 1fr; }
+    }
+
+    .pills{ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      color: rgba(0,0,0,.78);
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+
+    .heroTitle{
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      font-size: 36px;
+      line-height: 1.06;
+    }
+    .heroBody{
+      margin: 10px 0 14px;
+      font-size: var(--bodySize);
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .ctaRow{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+
+    .noteBox{
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.50);
+      margin-top: 14px;
+    }
+    .photo{
+      width: 54px; height: 54px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(0,0,0,.05));
+    }
+    .noteHdr{ font-weight: 700; font-size: 14px; margin: 0 0 2px; }
+    .noteMeta{ color: var(--muted); font-size: 12.5px; margin: 0 0 6px; }
+    .noteText{ color: var(--muted); font-size: 14px; margin: 0; }
+    .sig{ margin-top: 6px; color: var(--muted); font-style: italic; font-size: 14px; }
+
+    .mini3{
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 14px;
+    }
+    @media (max-width: 680px){
+      .mini3{ grid-template-columns: 1fr; }
+    }
+    .mini{
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.50);
+    }
+    .miniT{ margin: 0; font-weight: 700; font-size: 14px; }
+    .miniD{ margin: 6px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* Video card */
+    .videoHead{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      color: rgba(0,0,0,.72);
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .videoBox{ padding: 16px; }
+    .videoFrame{
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(0,0,0,.18);
+      background: var(--wash);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .hint{ margin-top: 10px; color: var(--muted); font-size: 12.5px; }
+
+    /* Sections */
+    .sectionTitle{
+      font-family: var(--display);
+      font-size: 26px;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .sectionSub{ margin-top: 6px; color: var(--muted); font-size: 14.5px; }
+    .sectionRow{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 26px 0 14px;
+    }
+
+    .grid2{
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr 0.9fr;
+      align-items: start;
+    }
+    @media (max-width: 920px){ .grid2{ grid-template-columns: 1fr; } }
+
+    .list{ margin: 0; padding-left: 18px; color: var(--muted); }
+    .list li{ margin: 8px 0; }
+
+    .softBox{
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      margin-top: 12px;
+    }
+    .softT{ margin: 0; font-weight: 700; font-size: 14px; }
+    .softD{ margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+
+    .howItem{
+      display: flex;
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.50);
+      margin-top: 10px;
+    }
+    .iconBox{
+      width: 42px; height: 42px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+    .howT{ margin: 0; font-weight: 700; font-size: 14px; }
+    .howD{ margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Testimonials */
+    .tGrid{
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 12px;
+    }
+    @media (max-width: 920px){ .tGrid{ grid-template-columns: 1fr; } }
+    blockquote{
+      margin: 0;
+      padding: 14px 14px;
+      border-left: 4px solid rgba(0,0,0,.25);
+      background: rgba(255,255,255,.55);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      color: rgba(0,0,0,.78);
+      font-size: 14.5px;
+    }
+    .who{ margin-top: 8px; color: var(--muted); font-size: 12.5px; }
+
+    /* FAQ uses details */
+    details{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{ cursor: pointer; font-weight: 700; list-style: none; }
+    summary::-webkit-details-marker{ display: none; }
+    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
+
+    /* Footer */
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card" id="mock">
+      <div class="navRow">
+        <div class="brand">
+          <div class="mark" aria-label="Logo placeholder">✦</div>
+          <div>
+            <div style="font-weight:750;">Michael Kai</div>
+            <div class="brandSmall">AI classes for thoughtful adults</div>
+          </div>
+        </div>
+
+        <div class="navLinks" aria-label="Primary">
+          <a href="#class">Class</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">
+          Book a session →
+        </a>
+      </div>
+
+      <div class="cardPad">
+        <div class="gridHero">
+          <!-- Left hero -->
+          <div>
+            <div class="pills">
+              <span class="pill">✓ Professional, patient, practical</span>
+              <span class="pill">🔒 Secure payment (Stripe)</span>
+              <span class="pill">📅 Auto Teams links</span>
+            </div>
+
+            <h2 class="heroTitle">Feel confident using AI — without the overwhelm.</h2>
+            <p class="heroBody">
+              Private, Teams-friendly instruction for retired professionals — and for working or mid-career adults who want AI explained clearly and safely.
+              Calm pacing, high standards, and practical outcomes.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book your first class →</a>
+              <a class="btn" href="#video">▶ Watch a 60-second intro</a>
+            </div>
+
+            <div class="noteBox">
+              <div class="photo" aria-label="Photo placeholder"></div>
+              <div>
+                <p class="noteHdr">A note from Michael</p>
+                <p class="noteMeta">Patient instruction · Privacy-first · Practical workflows</p>
+                <p class="noteText">
+                  Most clients are retired or near-retirement — and I also work with busy adults who want a clear, calm introduction to AI without the noise.
+                </p>
+                <div class="sig">— Michael</div>
+              </div>
+            </div>
+
+            <div class="mini3">
+              <div class="mini">
+                <p class="miniT">Clarity</p>
+                <p class="miniD">No jargon. Calm pacing.</p>
+              </div>
+              <div class="mini">
+                <p class="miniT">Safety</p>
+                <p class="miniD">Privacy-first practices.</p>
+              </div>
+              <div class="mini">
+                <p class="miniT">Results</p>
+                <p class="miniD">Leave with real workflows.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right hero -->
+          <div class="card" id="video">
+            <div class="videoHead">
+              <div style="font-weight:750;">🎥 Intro video</div>
+              <span class="badge">Embedded</span>
+            </div>
+            <div class="videoBox">
+              <div class="videoFrame">Video placeholder</div>
+              <div class="hint">A short introduction to your teaching style and what clients can expect.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sectionRow">
+          <div>
+            <div class="sectionTitle">A simple, premium flow</div>
+            <div class="sectionSub">Intro video → offering → booking → reassurance.</div>
+          </div>
+          <span class="badge">Homepage only</span>
+        </div>
+
+        <div class="grid2" id="class">
+          <div class="card cardPad">
+            <div class="sectionTitle" style="font-size:24px;">The Foundations Class</div>
+            <div class="sectionSub">One offering to start — easy to add more later.</div>
+
+            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
+              <span class="badge">60–90 minutes</span>
+              <span class="badge">1:1 or small group</span>
+              <span class="badge">Microsoft Teams</span>
+            </div>
+
+            <ul class="list" style="margin-top:12px;">
+              <li>What AI is (and isn’t), explained clearly</li>
+              <li>How to use ChatGPT safely and effectively</li>
+              <li>Simple prompts that produce reliable results</li>
+              <li>A personal “starter kit” workflow you’ll keep</li>
+            </ul>
+
+            <div class="softBox">
+              <div class="softT">Who it’s for</div>
+              <div class="softD">
+                Primarily retired professionals (70%) — with a meaningful slice of younger and mid-career adults (30%) who want a clear, high-standards introduction.
+              </div>
+            </div>
+
+            <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <div style="font-size:14px;">
+                <span style="font-weight:750;">$35/person</span> <span style="color:var(--muted);">group</span> · <span style="font-weight:750;">$60</span> <span style="color:var(--muted);">one-on-one</span>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn" href="#contact">Ask a question</a>
+                <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book now →</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="how">
+            <div class="card cardPad">
+              <div class="sectionTitle" style="font-size:22px;">How it works</div>
+              <div class="sectionSub">Designed to feel effortless on your end.</div>
+
+              <div class="howItem">
+                <div class="iconBox">📅</div>
+                <div>
+                  <p class="howT">Pick a time</p>
+                  <p class="howD">Calendly handles scheduling and sends the Teams link automatically.</p>
+                </div>
+              </div>
+
+              <div class="howItem">
+                <div class="iconBox">🛡️</div>
+                <div>
+                  <p class="howT">Pay securely</p>
+                  <p class="howD">Stripe checkout (turned on later via a paid Calendly plan).</p>
+                </div>
+              </div>
+
+              <div class="howItem">
+                <div class="iconBox">🎥</div>
+                <div>
+                  <p class="howT">Join the call</p>
+                  <p class="howD">Simple join instructions if you don’t already use Teams.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card cardPad" style="margin-top:14px;">
+              <div class="sectionTitle" style="font-size:22px;">Trust signals</div>
+              <div class="sectionSub">Small details that quietly raise confidence.</div>
+              <ul class="list" style="margin-top:12px;">
+                <li>Clear privacy boundaries and safe prompting habits</li>
+                <li>Session recap summary (optional) in plain English</li>
+                <li>A simple take-home workflow sheet</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:26px;">
+          <div class="sectionTitle" style="font-size:26px;">What clients say</div>
+          <div class="sectionSub">Placeholder layout — later we’ll swap in real testimonials.</div>
+
+          <div class="tGrid">
+            <div>
+              <blockquote>“Calm, clear, and practical.”</blockquote>
+              <div class="who">— Retired executive · Los Angeles</div>
+            </div>
+            <div>
+              <blockquote>“I left with a workflow I can actually use.”</blockquote>
+              <div class="who">— Mid-career manager · Pasadena</div>
+            </div>
+            <div>
+              <blockquote>“No hype. Just steady guidance.”</blockquote>
+              <div class="who">— Thoughtful adult · Santa Monica</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:26px;" id="faq">
+          <div class="sectionTitle" style="font-size:26px;">FAQ</div>
+          <div class="sectionSub">Keep it short. Answer the questions that block booking.</div>
+
+          <div style="margin-top:12px;">
+            <details>
+              <summary>Do I need a paid ChatGPT account?</summary>
+              <p>No — we’ll start with whatever you have and choose the simplest option that fits your goals.</p>
+            </details>
+            <details>
+              <summary>Is this safe and private?</summary>
+              <p>We’ll cover privacy basics, what not to share, and safe prompting habits.</p>
+            </details>
+            <details>
+              <summary>What if I’m not tech-savvy?</summary>
+              <p>That’s exactly who this is for. Calm pacing, no jargon, repeatable steps.</p>
+            </details>
+          </div>
+        </div>
+
+        <div style="margin-top:26px;" id="contact">
+          <div class="card cardPad">
+            <div class="sectionTitle" style="font-size:26px;">Contact</div>
+            <div class="sectionSub">For questions before booking.</div>
+
+            <div style="margin-top:12px;">
+              <div class="howItem">
+                <div class="iconBox">✉️</div>
+                <div>
+                  <p class="howT">Email</p>
+                  <p class="howD"><a class="under" href="mailto:support@mrkai.net">support@mrkai.net</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="foot">
+              <div>Hosting: Cloudflare Pages · Scheduling: Calendly · Calls: Microsoft Teams</div>
+              <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book a session →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot">
+          <div>© <span id="y"></span> Michael Kai</div>
+          <div style="display:flex; gap:16px;">
+            <a class="under" href="privacy.html">Privacy</a>
+            <a class="under" href="terms.html">Terms</a>
+          </div>
+        </div>
+
+      </div>
     </section>
-    <footer aria-label="Site footer" style="margin-top: 48px; padding-top: 16px; border-top: 1px solid #ddd; font-size: 0.95rem; color: #444;">
-      <p style="margin: 0 0 8px;">
-        © 2026 Michael Kai
-      </p>
-      <p style="margin: 0;">
-        Questions? Email
-        <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
-      </p>
-    </footer>
-  </body>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
