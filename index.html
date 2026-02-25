@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Michael Kai — Homepage Mockups</title>
-  <meta name="description" content="Homepage mockups with three style directions and a theme switcher." />
+  <title>Michael Kai — AI Classes for Thoughtful Adults</title>
+  <meta name="description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://michael-kai.com/" />
+  <meta property="og:title" content="Michael Kai — AI Classes for Thoughtful Adults" />
+  <meta property="og:description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <meta property="og:url" content="https://michael-kai.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Michael Kai — AI Classes for Thoughtful Adults" />
+  <meta name="twitter:description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
 
   <style>
     :root{
@@ -51,30 +60,6 @@
 
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
 
-    /* Header */
-    .top{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    h1{
-      margin: 0;
-      font-family: var(--display);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      font-size: 40px;
-      line-height: 1.08;
-    }
-    .sub{
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 14.5px;
-    }
-
     /* Cards / panels */
     .card{
       background: var(--panel);
@@ -91,14 +76,6 @@
       margin: 18px 0;
     }
 
-    /* Theme picker */
-    .picker{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: flex-end;
-    }
     .btn{
       display: inline-flex;
       align-items: center;
@@ -126,34 +103,7 @@
     }
     .btn.primary:hover{ background: var(--accentHover); }
 
-    .btn.picked{
-      background: var(--accentBg);
-      color: var(--accentInk);
-      border-color: rgba(0,0,0,.12);
-      box-shadow: var(--shadow2);
-    }
-
-    /* Notes */
-    .notesTitle{
-      font-family: var(--display);
-      font-size: 18px;
-      margin: 0 0 6px;
-      letter-spacing: -0.01em;
-    }
-    .tagline{
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 14.5px;
-    }
-    .noteList{
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14.5px;
-    }
-    .noteList li{ margin: 6px 0; }
-
-    /* Main nav bar (inside mockup) */
+    /* Main nav bar */
     .navRow{
       display: flex;
       flex-wrap: wrap;
@@ -413,42 +363,12 @@
       padding: 18px 0 0;
     }
 
-    /* Subtle polish */
-    .fade{
-      transition: opacity .20s ease, transform .20s ease;
-    }
-    .fade.swap{
-      opacity: .0;
-      transform: translateY(6px);
-    }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <div class="top">
-      <div>
-        <h1>Homepage mockups</h1>
-        <div class="sub">Three high-fidelity directions. Pick one, then we refine typography, spacing, and micro-details.</div>
-      </div>
-
-      <div class="picker" role="group" aria-label="Choose a theme direction">
-        <button class="btn picked" data-theme="quietLuxury" type="button">Quiet Luxury</button>
-        <button class="btn" data-theme="warmModern" type="button">Warm Modern</button>
-        <button class="btn" data-theme="editorialMinimal" type="button">Editorial Minimal</button>
-      </div>
-    </div>
-
-    <section class="card cardPad fade" id="directionNotes">
-      <div class="notesTitle">Direction notes</div>
-      <p class="tagline" id="tagline">Cream-forward calm, high-trust details, and human warmth.</p>
-      <ul class="noteList" id="notes"></ul>
-    </section>
-
-    <div class="rule"></div>
-
-    <!-- Mocked homepage begins -->
-    <section class="card fade" id="mock">
+    <section class="card" id="mock">
       <div class="navRow">
         <div class="brand">
           <div class="mark" aria-label="Logo placeholder">✦</div>
@@ -567,7 +487,7 @@
 
             <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
               <div style="font-size:14px;">
-                <span style="font-weight:750;">From $XX</span> <span style="color:var(--muted);">per session</span>
+                <span style="font-weight:750;">$35/person</span> <span style="color:var(--muted);">group</span> · <span style="font-weight:750;">$60</span> <span style="color:var(--muted);">one-on-one</span>
               </div>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <a class="btn" href="#contact">Ask a question</a>
@@ -663,26 +583,19 @@
             <div class="sectionTitle" style="font-size:26px;">Contact</div>
             <div class="sectionSub">For questions before booking.</div>
 
-            <div class="grid2" style="margin-top:12px;">
+            <div style="margin-top:12px;">
               <div class="howItem">
                 <div class="iconBox">✉️</div>
                 <div>
                   <p class="howT">Email</p>
-                  <p class="howD"><a class="under" href="mailto:hello@michaelkai.us">hello@michaelkai.us</a> (placeholder ok)</p>
-                </div>
-              </div>
-              <div class="howItem">
-                <div class="iconBox">☎️</div>
-                <div>
-                  <p class="howT">Phone</p>
-                  <p class="howD">(XXX) XXX-XXXX (placeholder)</p>
+                  <p class="howD"><a class="under" href="mailto:support@mrkai.net">support@mrkai.net</a></p>
                 </div>
               </div>
             </div>
 
             <div class="foot">
               <div>Hosting: Cloudflare Pages · Scheduling: Calendly · Calls: Microsoft Teams</div>
-              <a class="btn primary" href="https://calendly.com/michael-mrkkai/30min" target="_blank" rel="noopener">Book a session →</a>
+              <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book a session →</a>
             </div>
           </div>
         </div>
@@ -690,8 +603,8 @@
         <div class="foot">
           <div>© <span id="y"></span> Michael Kai</div>
           <div style="display:flex; gap:16px;">
-            <a class="under" href="#">Privacy</a>
-            <a class="under" href="#">Terms</a>
+            <a class="under" href="privacy.html">Privacy</a>
+            <a class="under" href="terms.html">Terms</a>
           </div>
         </div>
 
@@ -700,137 +613,7 @@
   </main>
 
   <script>
-    const themes = {
-      quietLuxury: {
-        name: "Quiet Luxury",
-        tagline: "Cream-forward calm, high-trust details, and human warmth.",
-        /* shifted toward classic cream */
-        bg: "#FAF6EF",
-        ink: "#1A1715",
-        panel: "rgba(255,253,249,.82)",
-        border: "rgba(0,0,0,.10)",
-        muted: "rgba(0,0,0,.65)",
-        wash: "#F5EBDD",
-        accentBg: "#302420",
-        accentHover: "#241a16",
-        accentInk: "#ffffff",
-        radius: "22px",
-        btnRadius: "999px",
-        display: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
-        body: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial',
-        bodySize: "16px",
-        leading: "1.75",
-        notes: [
-          "Best for ‘retired white-collar’ trust: generous whitespace, restrained contrast, subtle hairlines.",
-          "Signals taste without trying: serif display + quiet surfaces; feels expensive and calm.",
-          "Ideal if you want clients to feel they’re in good hands before they read a word."
-        ]
-      },
-      warmModern: {
-        name: "Warm Modern",
-        tagline: "Approachable warmth with modern structure and clarity.",
-        bg: "linear-gradient(180deg, #FFF7F0 0%, #FFFFFF 55%, #FFFFFF 100%)",
-        ink: "#0E0F12",
-        panel: "rgba(255,255,255,.80)",
-        border: "rgba(0,0,0,.10)",
-        muted: "rgba(0,0,0,.60)",
-        wash: "#FFEDD8",
-        accentBg: "#0E0F12",
-        accentHover: "#000000",
-        accentInk: "#ffffff",
-        radius: "22px",
-        btnRadius: "22px",
-        display: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial',
-        body: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial',
-        bodySize: "15px",
-        leading: "1.65",
-        notes: [
-          "Warmer first impression while staying professional — friendly curves and soft gradient.",
-          "Slightly more ‘approachable coach’ energy, still premium.",
-          "Great if your intro video shows warmth and you want the site to echo it."
-        ]
-      },
-      editorialMinimal: {
-        name: "Editorial Minimal",
-        tagline: "Confident, crisp, and unmistakably premium.",
-        bg: "#FFFFFF",
-        ink: "#000000",
-        panel: "#FFFFFF",
-        border: "rgba(0,0,0,.15)",
-        muted: "rgba(0,0,0,.60)",
-        wash: "rgba(0,0,0,.05)",
-        accentBg: "#000000",
-        accentHover: "rgba(0,0,0,.90)",
-        accentInk: "#ffffff",
-        radius: "0px",
-        btnRadius: "0px",
-        display: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial',
-        body: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial',
-        bodySize: "15px",
-        leading: "1.65",
-        notes: [
-          "High-confidence ‘editorial’ tone: crisp grid, bolder hierarchy, minimal ornament.",
-          "Feels like a serious publication or design studio — very premium when executed cleanly.",
-          "Best if you want the brand to read ‘sharp’ and ‘high standards’ immediately."
-        ]
-      }
-    };
-
-    const root = document.documentElement;
-    const body = document.body;
-    const taglineEl = document.getElementById("tagline");
-    const notesEl = document.getElementById("notes");
-    const y = document.getElementById("y");
-    const fadeTargets = [document.getElementById("directionNotes"), document.getElementById("mock")].filter(Boolean);
-
-    y.textContent = new Date().getFullYear();
-
-    function setNotes(list){
-      notesEl.innerHTML = "";
-      list.forEach(n => {
-        const li = document.createElement("li");
-        li.textContent = n;
-        notesEl.appendChild(li);
-      });
-    }
-
-    function applyTheme(key){
-      const t = themes[key] || themes.quietLuxury;
-
-      fadeTargets.forEach(el => el.classList.add("swap"));
-      setTimeout(() => {
-        root.style.setProperty("--ink", t.ink);
-        root.style.setProperty("--muted", t.muted);
-        root.style.setProperty("--panel", t.panel);
-        root.style.setProperty("--border", t.border);
-        root.style.setProperty("--wash", t.wash);
-        root.style.setProperty("--accentBg", t.accentBg);
-        root.style.setProperty("--accentHover", t.accentHover);
-        root.style.setProperty("--accentInk", t.accentInk);
-        root.style.setProperty("--radius", t.radius);
-        root.style.setProperty("--btnRadius", t.btnRadius);
-        root.style.setProperty("--display", t.display);
-        root.style.setProperty("--body", t.body);
-        root.style.setProperty("--bodySize", t.bodySize);
-        root.style.setProperty("--leading", t.leading);
-
-        body.style.background = t.bg;
-        taglineEl.textContent = t.tagline;
-        setNotes(t.notes);
-
-        document.querySelectorAll('[data-theme]').forEach(btn => {
-          btn.classList.toggle("picked", btn.getAttribute("data-theme") === key);
-        });
-
-        fadeTargets.forEach(el => el.classList.remove("swap"));
-      }, 140);
-    }
-
-    document.querySelectorAll('[data-theme]').forEach(btn => {
-      btn.addEventListener("click", () => applyTheme(btn.getAttribute("data-theme")));
-    });
-
-    applyTheme("quietLuxury");
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

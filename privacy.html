@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Michael Kai</title>
+  <meta name="description" content="Privacy policy for Michael Kai — live AI classes for adults." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://michael-kai.com/privacy.html" />
+  <meta property="og:title" content="Privacy Policy — Michael Kai" />
+  <meta property="og:description" content="Privacy policy for Michael Kai — live AI classes for adults." />
+  <meta property="og:url" content="https://michael-kai.com/privacy.html" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
+    :root{
+      --bg: #f7f0e6;
+      --ink: #1a1715;
+      --muted: rgba(0,0,0,.65);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
+      --border: rgba(0,0,0,.10);
+      --wash: #f1e5d7;
+
+      --accentBg: #2b211d;
+      --accentHover: #211815;
+      --accentInk: #ffffff;
+
+      --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --bodySize: 16px;
+      --leading: 1.75;
+
+      --radius: 22px;
+      --btnRadius: 999px;
+
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
+      --max: 1100px;
+      --focus: rgba(17,24,39,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    a:focus-visible, button:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
+    }
+
+    .skip{
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
+    }
+    .skip:focus{ transform:translateY(0); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 90px; }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); }
+    .btn:active{ transform:translateY(0); }
+
+    .btn--primary{
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
+    }
+    .btn--primary:hover{ background:var(--accentHover); }
+
+    .muted{ color:var(--muted); }
+
+    h1{
+      font-family:var(--display);
+      font-size:clamp(28px, 3.9vw, 40px);
+      line-height:1.08;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:26px;
+      line-height:1.15;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h3{
+      font-family:var(--body);
+      font-size:14px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:850;
+      color:rgba(0,0,0,.75);
+      margin:0;
+    }
+    p{ margin:0; }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+      background: rgba(255,255,255,.65);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    /* ===========================
+       NAV / HEADER
+       =========================== */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(247,240,230,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .mark{
+      width: 38px; height: 38px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
+    }
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    nav.primaryNav{
+      display: none;
+      align-items: center;
+      gap: 18px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      color: rgba(0,0,0,.80);
+    }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
+    }
+    .mobileActions .btn{ width: 100%; }
+
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    .overlay{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
+
+    /* ===========================
+       PAGE + LONGFORM PROSE
+       =========================== */
+    .page{ padding-top: 18px; }
+
+    .pageHeader{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.45);
+    }
+    .kicker{
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.70);
+      margin-bottom: 8px;
+    }
+
+    .contentCard{ margin-top: 14px; padding: 18px; }
+
+    .prose{
+      max-width: 74ch;
+      font-size: 16.5px;
+      line-height: 1.85;
+    }
+    .prose > * + *{ margin-top: 14px; }
+    .prose h2{ margin-top: 22px; }
+    .prose h3{ margin-top: 18px; }
+
+    .prose p{ color: rgba(0,0,0,.72); }
+    .prose p strong{ color: rgba(0,0,0,.86); }
+
+    .prose a{ text-decoration: underline; text-underline-offset: 3px; }
+    .prose a:hover{ text-decoration-thickness: 2px; }
+
+    .prose ul{
+      padding-left: 20px;
+      color: rgba(0,0,0,.72);
+    }
+    .prose li{ margin: 8px 0; }
+
+    .prose hr{
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .callout{
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+    .fineprint{
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .toc{
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+    .toc a{ text-decoration: none; }
+    .toc a:hover{ text-decoration: underline; }
+    .toc li{ margin: 3px 0; }
+
+    .foot{
+      margin-top: 18px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <header class="siteHeader">
+    <div class="navBar">
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes · live &amp; online</div>
+        </div>
+      </a>
+
+      <nav class="primaryNav" aria-label="Primary">
+        <a class="navLink" href="get-started.html">Get started</a>
+        <a class="navLink" href="index.html">Overview</a>
+        <a class="navLink" href="faq.html">FAQ</a>
+        <a class="navLink" href="privacy.html" aria-current="page">Privacy</a>
+        <a class="navLink" href="terms.html">Terms</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book a class</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html">Get started</a>
+          <a href="index.html">Overview</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="#offerings">See pricing</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page" id="content" tabindex="-1">
+    <section class="pageHeader">
+      <div class="kicker">Policy</div>
+      <h1>Privacy Policy</h1>
+      <p class="muted" style="margin-top:10px; max-width: 80ch;">
+        What I collect, how I use it, and how to reach me.
+      </p>
+      <p class="fineprint" style="margin-top:10px;">
+        <strong>Last updated:</strong> <span id="lastUpdated">February 18, 2026</span>
+      </p>
+    </section>
+
+    <section class="card contentCard" aria-label="Privacy policy content">
+      <article class="prose">
+        <div class="toc" aria-label="Table of contents">
+          <h3 style="margin:0 0 8px;">On this page</h3>
+          <ul style="margin:0; padding-left:18px;">
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#collect">Information I collect</a></li>
+            <li><a href="#use">How I use your information</a></li>
+            <li><a href="#recordings">Session recordings</a></li>
+            <li><a href="#share">When I share information</a></li>
+            <li><a href="#tracking">Cookies &amp; website tracking</a></li>
+            <li><a href="#retain">Retention</a></li>
+            <li><a href="#choices">Your choices</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#children">Children</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <h2 id="summary">Summary</h2>
+        <p>
+          I teach live, online AI classes for adults.
+          I keep data collection minimal. This page covers what I collect, how I use it, and what choices you have.
+        </p>
+        <div class="callout">
+          <h3 style="margin-bottom:8px;">In plain language</h3>
+          <ul style="margin:0; padding-left:18px;">
+            <li>I don't sell your information.</li>
+            <li>I use Facebook ads to reach new students, which involves standard website tracking and limited data sharing with Meta. Advertisers can't contact you through me.</li>
+            <li>I keep data collection to a minimum.</li>
+            <li>You can ask me to delete your information at any time.</li>
+          </ul>
+        </div>
+
+        <h2 id="collect">Information I collect</h2>
+        <p>
+          Depending on how you contact or book, I may collect:
+        </p>
+        <ul>
+          <li><strong>Contact information:</strong> your name (optional) and email address.</li>
+          <li><strong>Scheduling details:</strong> the time you book and any notes you include.</li>
+          <li><strong>Session logistics:</strong> Microsoft Teams meeting details and basic technical notes (to help you succeed).</li>
+          <li><strong>Payments:</strong> handled by Stripe. I don't store your credit card number — Stripe processes payments on my behalf.</li>
+        </ul>
+
+        <p class="fineprint">
+          <strong>Note:</strong> If you share sensitive details during a session or message — medical, financial, or otherwise — I treat them as private. As a general rule, avoid sharing anything in a class or email that you wouldn't want stored digitally.
+        </p>
+
+        <h2 id="use">How I use your information</h2>
+        <p>
+          I use your information to:
+        </p>
+        <ul>
+          <li>Reply to your messages and questions</li>
+          <li>Schedule and run sessions</li>
+          <li>Provide support (for example, helping you get Microsoft Teams working)</li>
+          <li>Handle payments and receipts</li>
+          <li>Improve my teaching (for example, by reviewing session recordings)</li>
+          <li>Measure and improve my advertising (see <a href="#tracking">Cookies &amp; website tracking</a>)</li>
+        </ul>
+
+        <h2 id="recordings">Session recordings</h2>
+        <p>
+          I may record sessions using Microsoft Teams to review and improve my teaching.
+          Recordings are stored securely in my Microsoft 365 account.
+        </p>
+        <ul>
+          <li>I'll let you know at the start of a session if it's being recorded.</li>
+          <li>Recordings are used only for my own review. I don't publish or share them.</li>
+          <li>Recordings are automatically deleted after 90 days.</li>
+          <li>In group sessions, other participants will be able to see and hear you during the class.</li>
+        </ul>
+        <p>
+          If you'd prefer not to be recorded, let me know and I'll turn it off. It won't affect your session.
+        </p>
+
+        <h2 id="share">When I share information</h2>
+        <p>
+          I share limited information with the services I use to run the business:
+        </p>
+        <ul>
+          <li><strong>Microsoft 365</strong> — email, sessions, and recordings</li>
+          <li><strong>Calendly</strong> — scheduling</li>
+          <li><strong>Stripe</strong> — payment processing</li>
+          <li><strong>Meta (Facebook)</strong> — advertising and audience targeting</li>
+          <li><strong>Cloudflare</strong> — website hosting and basic analytics</li>
+        </ul>
+        <p>
+          These providers process information on my behalf to deliver the service.
+          I may also share information if required by law, or to protect safety and prevent fraud.
+        </p>
+
+        <h2 id="tracking">Cookies &amp; website tracking</h2>
+        <p>
+          This website uses a small number of tracking tools:
+        </p>
+        <ul>
+          <li><strong>Cloudflare Web Analytics</strong> — collects basic, anonymous usage data (pages visited, general location). No personal information is tracked.</li>
+          <li><strong>Meta Pixel</strong> — helps me measure whether Facebook ads are working. It may set cookies in your browser and share browsing activity with Meta.</li>
+        </ul>
+        <p>
+          I may also occasionally share limited customer data (such as email addresses) with Meta to improve ad targeting — for example, to find new students with similar interests or to avoid showing ads to people who've already booked. Meta handles this matching on their end. I never see other people's data through this process.
+        </p>
+        <p>
+          You can limit tracking by adjusting your browser's cookie settings or by using
+          <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">Meta's ad preferences</a> page.
+        </p>
+
+        <h2 id="retain">Retention</h2>
+        <p>
+          I keep different types of information for different lengths of time:
+        </p>
+        <ul>
+          <li><strong>Session recordings:</strong> automatically deleted after 90 days.</li>
+          <li><strong>Business records</strong> (your name, email, session history, scheduling notes): kept for as long as the relationship is active, and for a reasonable period afterward for accounting and service purposes.</li>
+          <li><strong>Payment records:</strong> kept as required by tax and accounting obligations.</li>
+        </ul>
+        <p>
+          If you'd like me to delete your information, just ask. I'll remove what I can, noting any records I'm required to keep for legal or accounting reasons.
+        </p>
+
+        <h2 id="choices">Your choices</h2>
+        <ul>
+          <li>You can ask what information I have about you.</li>
+          <li>You can request corrections.</li>
+          <li>You can request deletion (subject to any legal or accounting obligations).</li>
+          <li>You can opt out of session recording at any time.</li>
+          <li>You can adjust your browser's cookie settings or use <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">Meta's ad preferences</a> to limit ad tracking.</li>
+        </ul>
+        <p class="fineprint">
+          <strong>California residents:</strong> You may have additional rights under California privacy law, including the right to know what personal information I've collected and the right to request deletion. Contact me at the address below to exercise these rights.
+        </p>
+
+        <h2 id="security">Security</h2>
+        <p>
+          No system is perfect, but I use reasonable security practices for a small business.
+          If you ever suspect an issue, contact me and I'll take it seriously.
+        </p>
+
+        <h2 id="children">Children</h2>
+        <p>
+          This service is designed for adults. I don't collect information from anyone under 13.
+        </p>
+
+        <h2 id="contact">Contact</h2>
+        <p>
+          For privacy questions or requests:
+        </p>
+        <ul>
+          <li><strong>Email:</strong> support@mrkai.net</li>
+        </ul>
+      </article>
+
+      <div class="foot" role="contentinfo" aria-label="Footer">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="get-started.html">Get started</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="design-system.html">Design system</a>
+      </div>
+    </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Mobile menu behavior
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
