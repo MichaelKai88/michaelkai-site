@@ -56,9 +56,30 @@
     }
 
     a{ color: inherit; text-decoration: none; }
-    .under{ text-decoration: underline; text-underline-offset: 3px; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible{
+      outline: 3px solid rgba(17,24,39,.18);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+    .skip{
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      transform: translateY(-160%);
+      transition: transform .18s ease;
+      z-index: 999;
+      font-weight: 800;
+    }
+    .skip:focus{ transform: translateY(0); }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 18px 90px; }
 
     /* Cards / panels */
     .card{
@@ -95,53 +116,164 @@
     }
     .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.82); }
     .btn:focus{ outline: 3px solid rgba(17,24,39,.18); outline-offset: 2px; }
-    .btn.primary{
+    .btn--primary{
       background: var(--accentBg);
       color: var(--accentInk);
       border-color: rgba(0,0,0,.12);
       box-shadow: var(--shadow2);
     }
-    .btn.primary:hover{ background: var(--accentHover); }
+    .btn--primary:hover{ background: var(--accentHover); }
 
-    /* Main nav bar */
-    .navRow{
+    .muted{ color: var(--muted); }
+
+    /* NAV / HEADER */
+    header.siteHeader{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(250,246,239,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .navBar{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 16px 18px;
-    }
-    .brand{
-      display: flex;
-      align-items: center;
       gap: 12px;
     }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
     .mark{
-      width: 40px; height: 40px;
+      width: 38px; height: 38px;
       border-radius: var(--radius);
       background: rgba(255,255,255,.60);
       border: 1px solid var(--border);
       display: grid;
       place-items: center;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: .02em;
+      user-select: none;
+      flex: 0 0 auto;
     }
-    .brandSmall{
-      color: var(--muted);
-      font-size: 12.5px;
-      margin-top: 2px;
-    }
-    .navLinks{
+    .brandTitle{ font-weight: 850; line-height: 1.1; }
+    .brandSub{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    nav.primaryNav{
       display: none;
+      align-items: center;
       gap: 18px;
-      font-size: 14px;
+    }
+    .navLink{
+      font-weight: 750;
+      font-size: 14.5px;
+      color: rgba(0,0,0,.78);
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+    }
+    .navLink:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,.55);
+      border-color: var(--border);
+    }
+    .navLink[aria-current="page"]{
+      background: rgba(255,255,255,.70);
+      border-color: var(--border);
+    }
+
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menuBtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      cursor: pointer;
+    }
+    .menuBtn:hover{ background: rgba(255,255,255,.82); }
+    .menuIcon{
+      width: 18px; height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menuIcon span{
+      display: block;
+      height: 2px;
+      background: rgba(0,0,0,.70);
+      border-radius: 10px;
+    }
+
+    .mobilePanelWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 12px;
+    }
+    .mobilePanel{
+      display: none;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+    }
+    .mobilePanel.isOpen{ display: block; }
+
+    .mobileLinks{
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mobileLinks a{
+      display: block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
       color: rgba(0,0,0,.80);
     }
-    .navLinks a:hover{ text-decoration: underline; text-underline-offset: 3px; }
-    @media (min-width: 880px){
-      .navLinks{ display: flex; }
+    .mobileLinks a:hover{ text-decoration: none; background: rgba(255,255,255,.85); }
+
+    .mobileActions{
+      display: grid;
+      gap: 10px;
     }
+    .mobileActions .btn{ width: 100%; }
+
+    @media (min-width: 860px){
+      nav.primaryNav{ display: flex; }
+      .menuBtn{ display: none; }
+      .mobilePanelWrap{ display: none; }
+    }
+
+    .overlay{
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,23,21,.18);
+      z-index: 40;
+    }
+    .overlay.isOpen{ display: block; }
+    @media (min-width: 860px){ .overlay{ display: none !important; } }
+
+    .page{ padding-top: 18px; }
 
     /* Layout sections */
     .gridHero{
@@ -225,15 +357,6 @@
     .miniT{ margin: 0; font-weight: 700; font-size: 14px; }
     .miniD{ margin: 6px 0 0; color: var(--muted); font-size: 12.5px; }
 
-    /* Video card */
-    .videoHead{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-    }
     .badge{
       display: inline-flex;
       align-items: center;
@@ -246,19 +369,6 @@
       font-size: 12px;
       font-weight: 650;
     }
-    .videoBox{ padding: 16px; }
-    .videoFrame{
-      aspect-ratio: 16/9;
-      width: 100%;
-      border-radius: var(--radius);
-      border: 1px dashed rgba(0,0,0,.18);
-      background: var(--wash);
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .hint{ margin-top: 10px; color: var(--muted); font-size: 12.5px; }
 
     /* Sections */
     .sectionTitle{
@@ -318,26 +428,6 @@
     .howT{ margin: 0; font-weight: 700; font-size: 14px; }
     .howD{ margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 
-    /* Testimonials */
-    .tGrid{
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 12px;
-    }
-    @media (max-width: 920px){ .tGrid{ grid-template-columns: 1fr; } }
-    blockquote{
-      margin: 0;
-      padding: 14px 14px;
-      border-left: 4px solid rgba(0,0,0,.25);
-      background: rgba(255,255,255,.55);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      color: rgba(0,0,0,.78);
-      font-size: 14.5px;
-    }
-    .who{ margin-top: 8px; color: var(--muted); font-size: 12.5px; }
-
     /* FAQ uses details */
     details{
       border: 1px solid var(--border);
@@ -361,43 +451,83 @@
       justify-content: space-between;
       font-size: 13px;
       padding: 18px 0 0;
+      border-top: 1px solid var(--border);
     }
 
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <section class="card" id="mock">
-      <div class="navRow">
-        <div class="brand">
-          <div class="mark" aria-label="Logo placeholder">✦</div>
-          <div>
-            <div style="font-weight:750;">Michael Kai</div>
-            <div class="brandSmall">AI classes for thoughtful adults</div>
-          </div>
-        </div>
+  <a class="skip" href="#content">Skip to content</a>
 
-        <div class="navLinks" aria-label="Primary">
-          <a href="#class">Class</a>
-          <a href="#how">How it works</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
-        </div>
+  <div class="overlay" id="overlay" hidden></div>
 
-        <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">
-          Book a session →
-        </a>
+  <header class="siteHeader">
+    <div class="navBar">
+      <a class="brand" href="index.html" aria-label="Michael Kai home">
+        <div class="mark" aria-hidden="true">MK</div>
+        <div>
+          <div class="brandTitle">Michael Kai</div>
+          <div class="brandSub">AI classes · live &amp; online</div>
+        </div>
+      </a>
+
+      <nav class="primaryNav" aria-label="Primary">
+        <a class="navLink" href="get-started.html">Get started</a>
+        <a class="navLink" href="index.html" aria-current="page">Overview</a>
+        <a class="navLink" href="faq.html">FAQ</a>
+        <a class="navLink" href="privacy.html">Privacy</a>
+        <a class="navLink" href="terms.html">Terms</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="get-started.html">Book a class</a>
+
+        <button
+          class="menuBtn"
+          id="menuBtn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="menuIcon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
       </div>
+    </div>
 
-      <div class="cardPad">
+    <div class="mobilePanelWrap">
+      <div
+        class="mobilePanel"
+        id="mobilePanel"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Site menu">
+        <div class="mobileLinks">
+          <a href="get-started.html">Get started</a>
+          <a href="index.html" aria-current="page">Overview</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <div class="mobileActions">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap page" id="content" tabindex="-1">
+    <section class="card cardPad">
         <div class="gridHero">
           <!-- Left hero -->
           <div>
             <div class="pills">
               <span class="pill">✓ Professional, patient, practical</span>
-              <span class="pill">🔒 Secure payment (Stripe)</span>
-              <span class="pill">📅 Auto Teams links</span>
             </div>
 
             <h2 class="heroTitle">Feel confident using AI — without the overwhelm.</h2>
@@ -407,8 +537,7 @@
             </p>
 
             <div class="ctaRow">
-              <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book your first class →</a>
-              <a class="btn" href="#video">▶ Watch a 60-second intro</a>
+              <a class="btn btn--primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book your first class →</a>
             </div>
 
             <div class="noteBox">
@@ -438,29 +567,9 @@
               </div>
             </div>
           </div>
-
-          <!-- Right hero -->
-          <div class="card" id="video">
-            <div class="videoHead">
-              <div style="font-weight:750;">🎥 Intro video</div>
-              <span class="badge">Embedded</span>
-            </div>
-            <div class="videoBox">
-              <div class="videoFrame">Video placeholder</div>
-              <div class="hint">A short introduction to your teaching style and what clients can expect.</div>
-            </div>
-          </div>
         </div>
 
-        <div class="sectionRow">
-          <div>
-            <div class="sectionTitle">A simple, premium flow</div>
-            <div class="sectionSub">Intro video → offering → booking → reassurance.</div>
-          </div>
-          <span class="badge">Homepage only</span>
-        </div>
-
-        <div class="grid2" id="class">
+        <div class="grid2" id="class" style="margin-top:26px;">
           <div class="card cardPad">
             <div class="sectionTitle" style="font-size:24px;">The Foundations Class</div>
             <div class="sectionSub">One offering to start — easy to add more later.</div>
@@ -491,7 +600,7 @@
               </div>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <a class="btn" href="#contact">Ask a question</a>
-                <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book now →</a>
+                <a class="btn btn--primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book now →</a>
               </div>
             </div>
           </div>
@@ -513,7 +622,7 @@
                 <div class="iconBox">🛡️</div>
                 <div>
                   <p class="howT">Pay securely</p>
-                  <p class="howD">Stripe checkout (turned on later via a paid Calendly plan).</p>
+                  <p class="howD">Simple, secure payment at time of booking.</p>
                 </div>
               </div>
 
@@ -538,29 +647,9 @@
           </div>
         </div>
 
-        <div style="margin-top:26px;">
-          <div class="sectionTitle" style="font-size:26px;">What clients say</div>
-          <div class="sectionSub">Placeholder layout — later we’ll swap in real testimonials.</div>
-
-          <div class="tGrid">
-            <div>
-              <blockquote>“Calm, clear, and practical.”</blockquote>
-              <div class="who">— Retired executive · Los Angeles</div>
-            </div>
-            <div>
-              <blockquote>“I left with a workflow I can actually use.”</blockquote>
-              <div class="who">— Mid-career manager · Pasadena</div>
-            </div>
-            <div>
-              <blockquote>“No hype. Just steady guidance.”</blockquote>
-              <div class="who">— Thoughtful adult · Santa Monica</div>
-            </div>
-          </div>
-        </div>
-
         <div style="margin-top:26px;" id="faq">
           <div class="sectionTitle" style="font-size:26px;">FAQ</div>
-          <div class="sectionSub">Keep it short. Answer the questions that block booking.</div>
+          <div class="sectionSub">Common questions about classes.</div>
 
           <div style="margin-top:12px;">
             <details>
@@ -593,27 +682,102 @@
               </div>
             </div>
 
-            <div class="foot">
-              <div>Hosting: Cloudflare Pages · Scheduling: Calendly · Calls: Microsoft Teams</div>
-              <a class="btn primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book a session →</a>
-            </div>
           </div>
         </div>
 
-        <div class="foot">
-          <div>© <span id="y"></span> Michael Kai</div>
-          <div style="display:flex; gap:16px;">
-            <a class="under" href="privacy.html">Privacy</a>
-            <a class="under" href="terms.html">Terms</a>
-          </div>
-        </div>
+      </div>
 
+      <div class="foot" role="contentinfo" aria-label="Footer">
+        <div>© <span id="y"></span> Michael Kai</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="get-started.html">Get started</a>
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
       </div>
     </section>
   </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const overlay = document.getElementById('overlay');
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('disabled'));
+      }
+
+      function openMenu(){
+        panel.classList.add('isOpen');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.setAttribute('aria-label','Close menu');
+        overlay.hidden = false;
+        overlay.classList.add('isOpen');
+        const focusables = getFocusable(panel);
+        if (focusables.length) focusables[0].focus();
+      }
+
+      function closeMenu(){
+        panel.classList.remove('isOpen');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+        overlay.classList.remove('isOpen');
+        overlay.hidden = true;
+        menuBtn.focus();
+      }
+
+      function isOpen(){
+        return panel.classList.contains('isOpen');
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+        else openMenu();
+      });
+
+      overlay.addEventListener('click', () => {
+        if (isOpen()) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()){
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key !== 'Tab') return;
+        const focusables = getFocusable(panel);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
+          panel.classList.remove('isOpen');
+          menuBtn.setAttribute('aria-expanded','false');
+          menuBtn.setAttribute('aria-label','Open menu');
+          overlay.classList.remove('isOpen');
+          overlay.hidden = true;
+        }
+      });
+    })();
   </script>
 </body>
 </html>
