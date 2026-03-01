@@ -30,3 +30,4 @@ Change policy:
 
 - Provide a short checklist: what changed + how to verify.
 
+Always work directly in the main working directory. Never use git worktrees.
