@@ -3,34 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Michael Kai — AI Classes for Thoughtful Adults</title>
-  <meta name="description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <title>Michael Kai — Live AI Classes for Adults</title>
+  <meta name="description" content="Live, small-group AI classes for adults and retirees. Learn practical AI skills step by step — with a real person guiding you." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="https://michael-kai.com/" />
-  <meta property="og:title" content="Michael Kai — AI Classes for Thoughtful Adults" />
-  <meta property="og:description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <meta property="og:title" content="Michael Kai — Live AI Classes for Adults" />
+  <meta property="og:description" content="Live, small-group AI classes for adults and retirees. Learn practical AI skills step by step — with a real person guiding you." />
   <meta property="og:url" content="https://michael-kai.com/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Michael Kai — AI Classes for Thoughtful Adults" />
-  <meta name="twitter:description" content="Private, patient AI instruction for retired professionals and working adults. Calm pacing, high standards, practical outcomes." />
+  <meta name="twitter:title" content="Michael Kai — Live AI Classes for Adults" />
+  <meta name="twitter:description" content="Live, small-group AI classes for adults and retirees. Learn practical AI skills step by step — with a real person guiding you." />
 
   <style>
+    /* ===========================
+       Shared Design System (keep consistent)
+       =========================== */
     :root{
+      --bg: #f7f0e6;
       --ink: #1a1715;
       --muted: rgba(0,0,0,.65);
-      /* quieter, more classic ivory */
-      --panel: rgba(255,253,249,.82);
+      --panel: rgba(255,252,247,.78);
+      --surface: rgba(255,255,255,.55);
       --border: rgba(0,0,0,.10);
-      /* less birch/rose, more cream */
-      --wash: #F5EBDD;
+      --wash: #f1e5d7;
 
-      --accentBg: #302420;
-      --accentHover: #241a16;
+      --accentBg: #2b211d;
+      --accentHover: #211815;
       --accentInk: #ffffff;
-
-      --radius: 22px;
-      --btnRadius: 999px;
 
       --display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
       --body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -38,102 +38,131 @@
       --bodySize: 16px;
       --leading: 1.75;
 
+      --radius: 22px;
+      --btnRadius: 999px;
+
       --shadow: 0 10px 30px rgba(17,24,39,.08);
       --shadow2: 0 6px 18px rgba(17,24,39,.08);
+
       --max: 1100px;
+      --focus: rgba(17,24,39,.18);
     }
 
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
-      margin: 0;
-      font-family: var(--body);
-      color: var(--ink);
-      line-height: var(--leading);
-      /* classic cream baseline (matches Quiet Luxury default) */
-      background: #FAF6EF;
-      transition: background .25s ease, color .25s ease;
+      margin:0;
+      font-family:var(--body);
+      font-size:var(--bodySize);
+      line-height:var(--leading);
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
     }
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
     a:focus-visible, button:focus-visible{
-      outline: 3px solid rgba(17,24,39,.18);
-      outline-offset: 2px;
-      border-radius: 12px;
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+      border-radius:12px;
     }
 
     .skip{
-      position: absolute;
-      left: 12px;
-      top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.92);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow2);
-      transform: translateY(-160%);
-      transition: transform .18s ease;
-      z-index: 999;
-      font-weight: 800;
+      position:absolute;
+      left:12px;
+      top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      transform:translateY(-160%);
+      transition:transform .18s ease;
+      z-index:999;
+      font-weight:800;
     }
-    .skip:focus{ transform: translateY(0); }
+    .skip:focus{ transform:translateY(0); }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 18px 90px; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 90px; }
 
-    /* Cards / panels */
     .card{
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .cardPad{ padding: 18px; }
-
-    .rule{
-      height: 1px;
-      background: var(--border);
-      margin: 18px 0;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
 
     .btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: var(--btnRadius);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.60);
-      color: var(--ink);
-      font-weight: 650;
-      cursor: pointer;
-      box-shadow: none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
-      user-select: none;
-      height: 40px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:var(--btnRadius);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.60);
+      color:var(--ink);
+      font-weight:750;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease;
+      min-height:40px;
+      user-select:none;
+      text-decoration:none;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.82); }
-    .btn:focus{ outline: 3px solid rgba(17,24,39,.18); outline-offset: 2px; }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); text-decoration:none; }
+    .btn:active{ transform:translateY(0); }
+
     .btn--primary{
-      background: var(--accentBg);
-      color: var(--accentInk);
-      border-color: rgba(0,0,0,.12);
-      box-shadow: var(--shadow2);
+      background:var(--accentBg);
+      color:var(--accentInk);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:var(--shadow2);
     }
-    .btn--primary:hover{ background: var(--accentHover); }
+    .btn--primary:hover{ background:var(--accentHover); }
 
-    .muted{ color: var(--muted); }
+    .muted{ color:var(--muted); }
+    .rule{ height:1px; background:var(--border); margin:18px 0; }
 
-    /* NAV / HEADER */
+    h1{
+      font-family:var(--display);
+      font-size:clamp(30px, 4.2vw, 46px);
+      line-height:1.05;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h2{
+      font-family:var(--display);
+      font-size:26px;
+      line-height:1.15;
+      font-weight:750;
+      letter-spacing:-0.02em;
+      margin:0;
+    }
+    h3{
+      font-family:var(--body);
+      font-size:14px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:850;
+      color:rgba(0,0,0,.75);
+      margin:0;
+    }
+    p{ margin:0; }
+
+    /* ===========================
+       NAV / HEADER
+       =========================== */
     header.siteHeader{
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      background: rgba(250,246,239,.72);
+      background: rgba(247,240,230,.72);
       border-bottom: 1px solid var(--border);
     }
     .navBar{
@@ -249,7 +278,7 @@
       font-weight: 800;
       color: rgba(0,0,0,.80);
     }
-    .mobileLinks a:hover{ text-decoration: none; background: rgba(255,255,255,.85); }
+    .mobileLinks a:hover{ text-decoration:none; background: rgba(255,255,255,.85); }
 
     .mobileActions{
       display: grid;
@@ -264,34 +293,36 @@
     }
 
     .overlay{
-      display: none;
+      display:none;
       position: fixed;
       inset: 0;
       background: rgba(26,23,21,.18);
       z-index: 40;
     }
-    .overlay.isOpen{ display: block; }
-    @media (min-width: 860px){ .overlay{ display: none !important; } }
+    .overlay.isOpen{ display:block; }
+    @media (min-width: 860px){ .overlay{ display:none !important; } }
 
-    .page{ padding-top: 18px; }
-
-    /* Layout sections */
-    .gridHero{
-      display: grid;
-      gap: 18px;
-      grid-template-columns: 1.12fr 0.88fr;
-      align-items: start;
+    /* ===========================
+       HOMEPAGE SECTIONS
+       =========================== */
+    .hero{
       margin-top: 18px;
-    }
-    @media (max-width: 920px){
-      .gridHero{ grid-template-columns: 1fr; }
+      padding: 18px;
     }
 
-    .pills{ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .gridHero{
+      display:grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+      align-items:start;
+      max-width: 680px;
+    }
+
+    .pills{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 12px; }
     .pill{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding: 8px 10px;
       border-radius: var(--btnRadius);
       border: 1px solid var(--border);
@@ -301,25 +332,18 @@
       white-space: nowrap;
     }
 
-    .heroTitle{
-      margin: 0;
-      font-family: var(--display);
-      font-weight: 750;
-      letter-spacing: -0.02em;
-      font-size: 36px;
-      line-height: 1.06;
-    }
     .heroBody{
-      margin: 10px 0 14px;
-      font-size: var(--bodySize);
+      margin-top: 10px;
       color: var(--muted);
-      max-width: 58ch;
+      max-width: 62ch;
+      font-size: 16.5px;
+      line-height: 1.85;
     }
 
-    .ctaRow{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; }
 
     .noteBox{
-      display: grid;
+      display:grid;
       grid-template-columns: 54px 1fr;
       gap: 12px;
       padding: 14px;
@@ -334,63 +358,61 @@
       border: 1px solid var(--border);
       background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(0,0,0,.05));
     }
-    .noteHdr{ font-weight: 700; font-size: 14px; margin: 0 0 2px; }
+    .noteHdr{ font-weight: 800; font-size: 14px; margin: 0 0 2px; }
     .noteMeta{ color: var(--muted); font-size: 12.5px; margin: 0 0 6px; }
-    .noteText{ color: var(--muted); font-size: 14px; margin: 0; }
+    .noteText{ color: var(--muted); font-size: 14.5px; margin: 0; }
     .sig{ margin-top: 6px; color: var(--muted); font-style: italic; font-size: 14px; }
 
-    .mini3{
-      display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 14px;
+    .videoCard{ overflow:hidden; }
+    .videoHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
     }
-    @media (max-width: 680px){
-      .mini3{ grid-template-columns: 1fr; }
-    }
-    .mini{
-      padding: 14px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.50);
-    }
-    .miniT{ margin: 0; font-weight: 700; font-size: 14px; }
-    .miniD{ margin: 6px 0 0; color: var(--muted); font-size: 12.5px; }
-
     .badge{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding: 6px 10px;
       border-radius: var(--btnRadius);
       border: 1px solid var(--border);
       background: var(--wash);
       color: rgba(0,0,0,.72);
       font-size: 12px;
-      font-weight: 650;
+      font-weight: 750;
     }
+    .videoBox{ padding: 16px; }
+    .videoFrame{
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(0,0,0,.18);
+      background: var(--wash);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .hint{ margin-top: 10px; color: var(--muted); font-size: 12.5px; }
 
-    /* Sections */
-    .sectionTitle{
-      font-family: var(--display);
-      font-size: 26px;
-      margin: 0;
-      letter-spacing: -0.02em;
-    }
-    .sectionSub{ margin-top: 6px; color: var(--muted); font-size: 14.5px; }
     .sectionRow{
-      display: flex;
-      align-items: center;
+      display:flex;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 12px;
+      flex-wrap: wrap;
       margin: 26px 0 14px;
     }
+    .sectionSub{ margin-top: 6px; color: var(--muted); font-size: 14.5px; }
 
     .grid2{
-      display: grid;
+      display:grid;
       gap: 14px;
-      grid-template-columns: 1fr 0.9fr;
-      align-items: start;
+      grid-template-columns: 1fr .92fr;
+      align-items:start;
     }
     @media (max-width: 920px){ .grid2{ grid-template-columns: 1fr; } }
 
@@ -404,11 +426,11 @@
       background: var(--wash);
       margin-top: 12px;
     }
-    .softT{ margin: 0; font-weight: 700; font-size: 14px; }
-    .softD{ margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .softT{ margin: 0; font-weight: 850; font-size: 14px; }
+    .softD{ margin: 6px 0 0; color: var(--muted); font-size: 14.5px; }
 
     .howItem{
-      display: flex;
+      display:flex;
       gap: 12px;
       padding: 14px;
       border-radius: var(--radius);
@@ -423,12 +445,13 @@
       background: rgba(255,255,255,.60);
       display: grid;
       place-items: center;
-      font-weight: 800;
+      font-weight: 900;
+      user-select: none;
+      flex: 0 0 auto;
     }
-    .howT{ margin: 0; font-weight: 700; font-size: 14px; }
-    .howD{ margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    .howT{ margin: 0; font-weight: 850; font-size: 14px; }
+    .howD{ margin: 4px 0 0; color: var(--muted); font-size: 14.5px; }
 
-    /* FAQ uses details */
     details{
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -436,11 +459,10 @@
       padding: 12px 14px;
     }
     details + details{ margin-top: 10px; }
-    summary{ cursor: pointer; font-weight: 700; list-style: none; }
+    summary{ cursor: pointer; font-weight: 850; list-style: none; }
     summary::-webkit-details-marker{ display: none; }
     details p{ margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
 
-    /* Footer */
     .foot{
       margin-top: 18px;
       color: var(--muted);
@@ -455,7 +477,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      *{ transition: none !important; scroll-behavior: auto !important; }
+      *{ transition:none !important; scroll-behavior:auto !important; }
     }
   </style>
 </head>
@@ -516,208 +538,248 @@
         </div>
         <div class="mobileActions">
           <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="#offerings">See pricing</a>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="wrap page" id="content" tabindex="-1">
-    <section class="card cardPad">
-        <div class="gridHero">
-          <!-- Left hero -->
-          <div>
-            <div class="pills">
-              <span class="pill">✓ Professional, patient, practical</span>
-            </div>
-
-            <h2 class="heroTitle">Feel confident using AI — without the overwhelm.</h2>
-            <p class="heroBody">
-              Private, Teams-friendly instruction for retired professionals — and for working or mid-career adults who want AI explained clearly and safely.
-              Calm pacing, high standards, and practical outcomes.
-            </p>
-
-            <div class="ctaRow">
-              <a class="btn btn--primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book your first class →</a>
-            </div>
-
-            <div class="noteBox">
-              <div class="photo" aria-label="Photo placeholder"></div>
-              <div>
-                <p class="noteHdr">A note from Michael</p>
-                <p class="noteMeta">Patient instruction · Privacy-first · Practical workflows</p>
-                <p class="noteText">
-                  Most clients are retired or near-retirement — and I also work with busy adults who want a clear, calm introduction to AI without the noise.
-                </p>
-                <div class="sig">— Michael</div>
-              </div>
-            </div>
-
-            <div class="mini3">
-              <div class="mini">
-                <p class="miniT">Clarity</p>
-                <p class="miniD">No jargon. Calm pacing.</p>
-              </div>
-              <div class="mini">
-                <p class="miniT">Safety</p>
-                <p class="miniD">Privacy-first practices.</p>
-              </div>
-              <div class="mini">
-                <p class="miniT">Results</p>
-                <p class="miniD">Leave with real workflows.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid2" id="class" style="margin-top:26px;">
-          <div class="card cardPad">
-            <div class="sectionTitle" style="font-size:24px;">The Foundations Class</div>
-            <div class="sectionSub">One offering to start — easy to add more later.</div>
-
-            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
-              <span class="badge">60–90 minutes</span>
-              <span class="badge">1:1 or small group</span>
-              <span class="badge">Microsoft Teams</span>
-            </div>
-
-            <ul class="list" style="margin-top:12px;">
-              <li>What AI is (and isn’t), explained clearly</li>
-              <li>How to use ChatGPT safely and effectively</li>
-              <li>Simple prompts that produce reliable results</li>
-              <li>A personal “starter kit” workflow you’ll keep</li>
-            </ul>
-
-            <div class="softBox">
-              <div class="softT">Who it’s for</div>
-              <div class="softD">
-                Primarily retired professionals (70%) — with a meaningful slice of younger and mid-career adults (30%) who want a clear, high-standards introduction.
-              </div>
-            </div>
-
-            <div style="margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-              <div style="font-size:14px;">
-                <span style="font-weight:750;">$35/person</span> <span style="color:var(--muted);">group</span> · <span style="font-weight:750;">$60</span> <span style="color:var(--muted);">one-on-one</span>
-              </div>
-              <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <a class="btn" href="#contact">Ask a question</a>
-                <a class="btn btn--primary" href="https://calendly.com/michael-mrkai/30min" target="_blank" rel="noopener">Book now →</a>
-              </div>
-            </div>
+  <main class="wrap" id="content" tabindex="-1">
+    <!-- HERO -->
+    <section class="card hero" aria-label="Intro">
+      <div class="gridHero">
+        <div>
+          <div class="pills" aria-label="Highlights">
+            <span class="pill">✓ Step-by-step instruction</span>
+            <span class="pill">✓ Small groups or one-on-one</span>
+            <span class="pill">✓ No experience needed</span>
           </div>
 
-          <div id="how">
-            <div class="card cardPad">
-              <div class="sectionTitle" style="font-size:22px;">How it works</div>
-              <div class="sectionSub">Designed to feel effortless on your end.</div>
+          <h1>Learn AI at your own pace — with a real person guiding you.</h1>
+          <p class="heroBody">
+            Live online classes for adults who want to use AI confidently — without rushing or jargon.
+            You'll leave each session with clear steps you can repeat on your own.
+          </p>
 
-              <div class="howItem">
-                <div class="iconBox">📅</div>
-                <div>
-                  <p class="howT">Pick a time</p>
-                  <p class="howD">Calendly handles scheduling and sends the Teams link automatically.</p>
-                </div>
-              </div>
-
-              <div class="howItem">
-                <div class="iconBox">🛡️</div>
-                <div>
-                  <p class="howT">Pay securely</p>
-                  <p class="howD">Simple, secure payment at time of booking.</p>
-                </div>
-              </div>
-
-              <div class="howItem">
-                <div class="iconBox">🎥</div>
-                <div>
-                  <p class="howT">Join the call</p>
-                  <p class="howD">Simple join instructions if you don’t already use Teams.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="card cardPad" style="margin-top:14px;">
-              <div class="sectionTitle" style="font-size:22px;">Trust signals</div>
-              <div class="sectionSub">Small details that quietly raise confidence.</div>
-              <ul class="list" style="margin-top:12px;">
-                <li>Clear privacy boundaries and safe prompting habits</li>
-                <li>Session recap summary (optional) in plain English</li>
-                <li>A simple take-home workflow sheet</li>
-              </ul>
-            </div>
+          <div class="ctaRow" aria-label="Primary actions">
+            <a class="btn btn--primary" href="get-started.html">Book a class</a>
+            <a class="btn" href="#offerings">See pricing</a>
+            <a class="btn" href="#faq">FAQ</a>
           </div>
-        </div>
 
-        <div style="margin-top:26px;" id="faq">
-          <div class="sectionTitle" style="font-size:26px;">FAQ</div>
-          <div class="sectionSub">Common questions about classes.</div>
-
-          <div style="margin-top:12px;">
-            <details>
-              <summary>What if I've never used AI before?</summary>
-              <p>You're in good company. Some students have never tried AI. Others have used it a few times but want to get more out of it. Either way, the class meets you where you are.</p>
-            </details>
-            <details>
-              <summary>I've tried AI and found it confusing — is this different?</summary>
-              <p>You're not alone — and it's not you. Most people open AI, try a question or two, and think <em>that's it?</em> The difference in class is that we walk through how to actually work with it — not just type into it.</p>
-            </details>
-            <details>
-              <summary>What kinds of things can AI help with?</summary>
-              <p>The short answer: more than you'd expect. Yes, it can help with everyday things — writing a message you've been putting off, comparing Medicare supplement plans, making sense of a legal document. But that's not the interesting part. AI lets you take on things you'd normally hand off, skip, or never think to try — like researching a health question before a doctor's appointment, understanding how your retirement account actually works, or finally thinking through a decision that's been nagging at you. Most people leave their first class with a longer list of ideas than they came in with.</p>
-            </details>
-            <details>
-              <summary>Is this safe and private?</summary>
-              <p>Yes. We'll talk through how to think about what you share with AI — what's low-risk, what deserves more caution, and how to adjust your privacy settings. There's no single rule that fits everyone, but you'll leave with a clear sense of where your own comfort level is.</p>
-            </details>
-            <details>
-              <summary>What will I be able to do after one class?</summary>
-              <p>You'll know your way around the app, have a feel for how to talk to AI to get useful results, and — perhaps most importantly — you'll start seeing places in your own life where it could help. The goal isn't just learning a tool. It's learning a new way to think about what's possible.</p>
-            </details>
-            <details>
-              <summary>Do I need a paid AI account? Which app should I use?</summary>
-              <p>No — the free versions work well. I teach with ChatGPT, but Claude and Google Gemini are both great and work similarly. In class, we'll cover when upgrading to a paid plan makes sense and touch on the pros and cons of each. You'll find download links on the <a href="get-started.html">Get Started</a> page.</p>
-            </details>
-            <details>
-              <summary>Group or one-on-one — how do I choose?</summary>
-              <p>The group class is great if you want to learn alongside others — you'll pick up ideas from their questions too. One-on-one is ideal if you have a specific goal, prefer your own pace, or want help getting set up. Not sure? Most people go with their gut — there's no wrong choice here.</p>
-            </details>
-          </div>
-        </div>
-
-        <div style="margin-top:26px;" id="contact">
-          <div class="card cardPad">
-            <div class="sectionTitle" style="font-size:26px;">Contact</div>
-            <div class="sectionSub">For questions before booking.</div>
-
-            <div style="margin-top:12px;">
-              <div class="howItem">
-                <div class="iconBox">✉️</div>
-                <div>
-                  <p class="howT">Email</p>
-                  <p class="howD"><a class="under" href="mailto:support@mrkai.net">support@mrkai.net</a></p>
-                </div>
-              </div>
+          <div class="noteBox" aria-label="Note from Michael">
+            <div class="photo" aria-hidden="true"></div>
+            <div>
+              <p class="noteHdr">Your instructor · Marina del Rey, CA</p>
+              <p class="noteText">
+                I keep things simple. You ask questions as they come. We work through it together.
+              </p>
+              <div class="sig">— Michael</div>
             </div>
-
           </div>
         </div>
 
       </div>
+    </section>
 
-      <div class="foot" role="contentinfo" aria-label="Footer">
-        <div>© <span id="y"></span> Michael Kai</div>
-        <div style="display:flex; gap:16px; flex-wrap:wrap;">
-          <a href="get-started.html">Get started</a>
-          <a href="faq.html">FAQ</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
+    <!-- OFFERINGS -->
+    <div class="sectionRow" id="offerings">
+      <div>
+        <h2>Classes</h2>
+        <div class="sectionSub">Two formats. You choose what fits.</div>
+      </div>
+      <span class="badge">Live online</span>
+    </div>
+
+    <section class="grid2" aria-label="Offerings and how it works">
+      <div class="card" style="padding:18px;">
+        <h2 style="font-size:24px;">Small group (2–4 people)</h2>
+        <p class="muted" style="margin-top:6px;">$35 per person</p>
+
+        <ul class="list" style="margin-top:12px;">
+          <li>Small enough to be heard — while learning from each other.</li>
+          <li>Ask anything, anytime — questions are part of the lesson.</li>
+          <li>You’ll leave having done something real with AI — and with a sense of what else is possible.</li>
+        </ul>
+
+        <div class="softBox">
+          <div class="softT">Good first topics</div>
+          <div class="softD">Writing emails, spotting scams, planning trips, organizing to-dos, and learning safe prompts.</div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="#contact">Ask a question</a>
+        </div>
+      </div>
+
+      <div class="card" style="padding:18px;">
+        <h2 style="font-size:24px;">One-on-one</h2>
+        <p class="muted" style="margin-top:6px;">$60</p>
+
+        <ul class="list" style="margin-top:12px;">
+          <li>The entire session is shaped around you — your goals, your pace, your questions.</li>
+          <li>No audience, no pressure. Just honest questions and clear answers.</li>
+          <li>If something clicks, we go deeper. If something’s unclear, we slow down. You lead.</li>
+          <li>We go wherever your curiosity takes us — no fixed script.</li>
+        </ul>
+
+        <div class="softBox">
+          <div class="softT">Best for</div>
+          <div class="softD">Learning at your own pace, setting up accounts, and building confidence quickly.</div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn--primary" href="get-started.html">Book a class</a>
+          <a class="btn" href="#faq">Read FAQ</a>
         </div>
       </div>
     </section>
+
+    <!-- HOW IT WORKS -->
+    <div class="sectionRow" id="how">
+      <div>
+        <h2>How it works</h2>
+        <div class="sectionSub">Designed to feel easy on your end.</div>
+      </div>
+      <span class="badge">3 steps</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="How it works">
+      <div class="grid2">
+        <div>
+          <div class="howItem">
+            <div class="iconBox" aria-hidden="true">1</div>
+            <div>
+              <p class="howT">Start with the checklist</p>
+              <p class="howD">A short prep page so your first session runs smoothly.</p>
+            </div>
+          </div>
+
+          <div class="howItem">
+            <div class="iconBox" aria-hidden="true">2</div>
+            <div>
+              <p class="howT">Join on Microsoft Teams</p>
+              <p class="howD">I’ll send you a link. One click to join.</p>
+            </div>
+          </div>
+
+          <div class="howItem">
+            <div class="iconBox" aria-hidden="true">3</div>
+            <div>
+              <p class="howT">Leave with repeatable steps</p>
+              <p class="howD">You’ll walk away with a few “wins” you can use the same day.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="softBox" style="margin-top:0;">
+            <div class="softT">Most important promise</div>
+            <div class="softD">We go at your pace. No jargon. No pressure. If something isn’t clear, we simply go over it again.</div>
+          </div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn--primary" href="get-started.html">Book a class</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <div class="sectionRow" id="faq">
+      <div>
+        <h2>FAQ</h2>
+        <div class="sectionSub">What most people want to know first.</div>
+      </div>
+      <span class="badge">Quick</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="FAQ">
+      <details>
+        <summary>What if I’ve never used AI before?</summary>
+        <p>You’re in good company. Some students have never tried AI. Others have used it a few times but want to get more out of it. Either way, the class meets you where you are.</p>
+      </details>
+
+      <details>
+        <summary>I’ve tried AI and found it confusing — is this different?</summary>
+        <p>You’re not alone — and it’s not you. Most people open AI, try a question or two, and think <em>that’s it?</em> The difference in class is that we walk through how to actually work with it — not just type into it.</p>
+      </details>
+
+      <details>
+        <summary>What kinds of things can AI help with?</summary>
+        <p>The short answer: more than you’d expect. Yes, it can help with everyday things — writing a message you’ve been putting off, comparing Medicare supplement plans, making sense of a legal document. But that’s not the interesting part. AI lets you take on things you’d normally hand off, skip, or never think to try — like researching a health question before a doctor’s appointment, understanding how your retirement account actually works, or finally thinking through a decision that’s been nagging at you. Most people leave their first class with a longer list of ideas than they came in with.</p>
+      </details>
+
+      <details>
+        <summary>What will I be able to do after one class?</summary>
+        <p>You’ll know your way around the app, have a feel for how to talk to AI to get useful results, and — perhaps most importantly — you’ll start seeing places in your own life where it could help. The goal isn’t just learning a tool. It’s learning a new way to think about what’s possible.</p>
+      </details>
+
+      <details>
+        <summary>Is this safe and private?</summary>
+        <p>Yes. We’ll talk through how to think about what you share with AI — what’s low-risk, what deserves more caution, and how to adjust your privacy settings. There’s no single rule that fits everyone, but you’ll leave with a clear sense of where your own comfort level is.</p>
+      </details>
+
+      <details>
+        <summary>Do I need a paid AI account? Which app should I use?</summary>
+        <p>No — the free versions work well. I teach with ChatGPT, but Claude and Google Gemini are both great and work similarly. In class, we’ll cover when upgrading to a paid plan makes sense and touch on the pros and cons of each. You’ll find download links on the Get Started page.</p>
+      </details>
+
+      <details>
+        <summary>Group or one-on-one — how do I choose?</summary>
+        <p>The group class is great if you want to learn alongside others — you’ll pick up ideas from their questions too. One-on-one is ideal if you have a specific goal, prefer your own pace, or want help getting set up. Not sure? Most people go with their gut — there’s no wrong choice here.</p>
+      </details>
+
+      <div style="margin-top:14px; text-align:center;">
+        <a class="btn" href="faq.html">See all FAQ →</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="sectionRow" id="contact">
+      <div>
+        <h2>Contact</h2>
+        <div class="sectionSub">Questions before you book? Happy to help.</div>
+      </div>
+      <span class="badge">Simple</span>
+    </div>
+
+    <section class="card" style="padding:18px;" aria-label="Contact">
+      <div class="grid2">
+        <div class="howItem">
+          <div class="iconBox" aria-hidden="true">✉️</div>
+          <div>
+            <p class="howT">Email</p>
+            <p class="howD"><a href="mailto:support@mrkai.net" style="text-decoration:underline; text-underline-offset:3px;">support@mrkai.net</a></p>
+          </div>
+        </div>
+
+        <div class="howItem">
+          <div class="iconBox" aria-hidden="true">→</div>
+          <div>
+            <p class="howT">Ready to start?</p>
+            <p class="howD"><a href="get-started.html" style="text-decoration:underline; text-underline-offset:3px;">Open the Get Started page</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot" role="contentinfo" aria-label="Footer">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="get-started.html">Get started</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
   </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    // Mobile menu behavior (accessible: aria + focus trapping + Escape close)
     (function(){
       const menuBtn = document.getElementById('menuBtn');
       const panel = document.getElementById('mobilePanel');
@@ -733,8 +795,10 @@
         panel.classList.add('isOpen');
         menuBtn.setAttribute('aria-expanded','true');
         menuBtn.setAttribute('aria-label','Close menu');
+
         overlay.hidden = false;
         overlay.classList.add('isOpen');
+
         const focusables = getFocusable(panel);
         if (focusables.length) focusables[0].focus();
       }
@@ -743,8 +807,10 @@
         panel.classList.remove('isOpen');
         menuBtn.setAttribute('aria-expanded','false');
         menuBtn.setAttribute('aria-label','Open menu');
+
         overlay.classList.remove('isOpen');
         overlay.hidden = true;
+
         menuBtn.focus();
       }
 
@@ -768,13 +834,17 @@
         }
       });
 
+      // Focus trap inside mobile panel while open
       document.addEventListener('keydown', (e) => {
         if (!isOpen()) return;
         if (e.key !== 'Tab') return;
+
         const focusables = getFocusable(panel);
         if (!focusables.length) return;
+
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
+
         if (e.shiftKey && document.activeElement === first){
           e.preventDefault();
           last.focus();
@@ -784,6 +854,7 @@
         }
       });
 
+      // If switching to desktop width, hide mobile menu if open
       window.addEventListener('resize', () => {
         if (window.matchMedia('(min-width: 860px)').matches && isOpen()){
           panel.classList.remove('isOpen');
