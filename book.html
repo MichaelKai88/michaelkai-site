@@ -3,10 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Page Template — Michael Kai</title>
-  <meta name="description" content="Reusable page layout with shared header/footer + content container (Quiet Luxury)." />
+  <title>Book a Session — Michael Kai</title>
+  <meta name="description" content="Book a live, one-on-one AI class or join a small group session. Personalized instruction for adults — delivered via Microsoft Teams." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://michael-kai.com/book.html" />
+  <meta property="og:title" content="Book a Session — Michael Kai" />
+  <meta property="og:description" content="Book a live, one-on-one AI class or join a small group session. Personalized instruction for adults — delivered via Microsoft Teams." />
+  <meta property="og:url" content="https://michael-kai.com/book.html" />
+  <meta property="og:type" content="website" />
 
   <style>
     /* ===========================
@@ -57,7 +61,7 @@
 
     a{ color:inherit; text-decoration:none; }
     a:hover{ text-decoration:underline; text-underline-offset:3px; }
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    a:focus-visible, button:focus-visible{
       outline:3px solid var(--focus);
       outline-offset:2px;
       border-radius:12px;
@@ -105,7 +109,7 @@
       user-select:none;
       text-decoration:none;
     }
-    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); }
+    .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.82); text-decoration:none; }
     .btn:active{ transform:translateY(0); }
 
     .btn--primary{
@@ -117,7 +121,6 @@
     .btn--primary:hover{ background:var(--accentHover); }
 
     .muted{ color:var(--muted); }
-    .rule{ height:1px; background:var(--border); margin:18px 0; }
 
     h1{
       font-family:var(--display);
@@ -147,7 +150,7 @@
     p{ margin:0; }
 
     /* ===========================
-       NAV / HEADER (same pattern as nav-demo)
+       NAV / HEADER
        =========================== */
     header.siteHeader{
       position: sticky;
@@ -298,9 +301,7 @@
     /* ===========================
        PAGE LAYOUT
        =========================== */
-    .page{
-      padding-top: 18px;
-    }
+    .page{ padding-top: 18px; }
 
     .pageHeader{
       padding: 18px;
@@ -317,31 +318,73 @@
       margin-bottom: 8px;
     }
 
-    .contentCard{
+    .contentCard{ margin-top: 14px; padding: 18px; }
+
+    .sectionRow{
+      display:flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 26px 0 14px;
+    }
+    .sectionSub{ margin-top: 6px; color: var(--muted); font-size: 14.5px; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 10px;
+      border-radius: var(--btnRadius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      color: rgba(0,0,0,.72);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .mini{
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Calendly embed container */
+    .embedWrap{
       margin-top: 14px;
-      padding: 18px;
-    }
-
-    .prose{
-      max-width: 78ch;
-    }
-    .prose p{ margin-top: 12px; }
-    .prose p:first-of-type{ margin-top: 0; }
-
-    .asideBox{
-      padding: 14px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
       background: rgba(255,255,255,.55);
+      overflow: hidden;
     }
 
-    .grid2{
-      display:grid;
-      gap:14px;
-      grid-template-columns: 1.4fr .9fr;
-      align-items:start;
+    /* Coming soon card */
+    .comingSoonCard{
+      padding: 28px 18px;
+      text-align: center;
     }
-    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } }
+    .comingSoonCard p{
+      color: var(--muted);
+      font-size: 16.5px;
+      max-width: 54ch;
+      margin: 0 auto;
+    }
+    .comingSoonCard p + p{ margin-top: 10px; }
+
+    .softBox{
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--wash);
+      margin-top: 14px;
+      max-width: 48ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .softT{ margin: 0; font-weight: 850; font-size: 14px; }
+    .softD{ margin: 6px 0 0; color: var(--muted); font-size: 14.5px; }
+
+    .rule{ height:1px; background:var(--border); margin:18px 0; }
 
     .foot{
       margin-top: 18px;
@@ -354,15 +397,6 @@
       font-size: 13px;
       padding: 18px 0 0;
       border-top: 1px solid var(--border);
-    }
-
-    code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size: .92em;
-      background: rgba(255,255,255,.65);
-      border: 1px solid var(--border);
-      padding: 2px 6px;
-      border-radius: 10px;
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -387,7 +421,6 @@
       </a>
 
       <nav class="primaryNav" aria-label="Primary">
-        <!-- Tip: add aria-current="page" to the active link on each page -->
         <a class="navLink" href="get-started.html">Get started</a>
         <a class="navLink" href="index.html">Overview</a>
         <a class="navLink" href="faq.html">FAQ</a>
@@ -396,7 +429,7 @@
       </nav>
 
       <div class="actions">
-        <a class="btn btn--primary" href="book.html">Book a class →</a>
+        <a class="btn btn--primary" href="book.html" aria-current="page">Book a class →</a>
 
         <button
           class="menuBtn"
@@ -427,86 +460,94 @@
           <a href="terms.html">Terms</a>
         </div>
         <div class="mobileActions">
-          <a class="btn btn--primary" href="book.html">Book a class →</a>
+          <a class="btn btn--primary" href="book.html" aria-current="page">Book a class →</a>
           <a class="btn" href="index.html#offerings">See pricing</a>
         </div>
       </div>
     </div>
   </header>
 
-<main class="wrap page" id="content" tabindex="-1">
+  <main class="wrap page" id="content" tabindex="-1">
     <section class="pageHeader">
-      <div class="kicker">Reusable template</div>
-      <h1>Page Title Goes Here</h1>
+      <div class="kicker">Scheduling</div>
+      <h1>Book a Session</h1>
       <p class="muted" style="margin-top:10px; max-width: 80ch;">
-        This is the standard page shell: shared header + content container + simple footer.
-        Replace the title, kicker, and the content blocks below.
+        Choose the format that suits you. One-on-one sessions are available now — select a time below and you're set.
       </p>
     </section>
 
-    <section class="card contentCard" aria-label="Page content">
-      <div class="grid2">
-        <div class="prose">
-          <h2 style="margin-bottom: 8px;">Main content</h2>
-          <p class="muted">
-            Use this template for pages like <code>privacy.html</code>, <code>terms.html</code>, <code>get-started.html</code>,
-            and any future supporting pages.
-          </p>
+    <!-- SECTION A: One-on-One Sessions -->
+    <div class="sectionRow" id="one-on-one">
+      <div>
+        <h2>One-on-One Session</h2>
+        <div class="sectionSub">60 minutes, personalized to your goals.</div>
+      </div>
+      <span class="badge">Available now</span>
+    </div>
 
-          <p>
-            Keep paragraphs short and readable. Prefer plain language. Avoid walls of text.
-            When you need long legal-style pages, we’ll use the separate long-form typography file.
-          </p>
+    <section class="card contentCard" aria-label="One-on-one booking">
+      <p class="mini" style="max-width: 68ch;">
+        A private, 60-minute session shaped entirely around you — your questions, your pace, your goals.
+        Delivered live via Microsoft Teams. <strong>$60 per session.</strong>
+      </p>
 
-          <div class="rule"></div>
+      <div class="embedWrap" style="margin-top: 18px;">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/michael-mrkai/one-on-one" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </section>
 
-          <h3 style="margin-bottom: 8px;">Example: pricing reference</h3>
-          <p class="muted">
-            Small group (2–4): <strong>$35 per person</strong> · One-on-one: <strong>$60</strong>
-          </p>
+    <!-- SECTION B: Small Group Classes -->
+    <div class="sectionRow" id="group">
+      <div>
+        <h2>Small Group Classes</h2>
+        <div class="sectionSub">Learn alongside others in a relaxed setting.</div>
+      </div>
+      <span class="badge">Coming soon</span>
+    </div>
 
-          <div style="margin-top:14px;">
-            <a class="btn btn--primary" href="get-started.html">Primary action →</a>
-            <a class="btn" href="index.html">Secondary link</a>
+    <section class="card" aria-label="Small group classes">
+      <div class="comingSoonCard">
+        <h3 style="margin-bottom: 14px;">Group sessions are on the way</h3>
+        <p>
+          2 to 4 people per session. Collaborative, low-pressure, and guided step by step.
+          Delivered live via Microsoft Teams. <strong>$35 per person.</strong>
+        </p>
+        <p>
+          If you'd like to be notified when group sessions open, or if you have a small group ready to go, get in touch.
+        </p>
+
+        <div class="softBox">
+          <div class="softT">Interested in a group session?</div>
+          <div class="softD">
+            <a href="mailto:support@mrkai.net?subject=Group%20Class%20Interest" style="text-decoration:underline; text-underline-offset:3px;">
+              Send a quick note
+            </a>
+            and I'll follow up when scheduling opens.
           </div>
         </div>
 
-        <aside class="asideBox" aria-label="Sidebar">
-          <h3>Sidebar</h3>
-          <p class="muted" style="margin-top:10px;">
-            Optional: use for contact details, short checklists, or a calm “next step” box.
-          </p>
-
-          <div class="rule"></div>
-
-          <p class="muted" style="font-size: 14.5px;">
-            Tip: Keep sidebars short. If it becomes long, move it into the main content.
-          </p>
-
-          <div style="margin-top: 12px;">
-            <a class="btn btn--primary" href="get-started.html" style="width:100%;">Get started →</a>
-          </div>
-        </aside>
-      </div>
-
-      <div class="foot" role="contentinfo" aria-label="Footer">
-        <div>© <span id="y"></span> Michael Kai</div>
-        <div style="display:flex; gap:16px; flex-wrap:wrap;">
-          <a href="get-started.html">Get started</a>
-          <a href="faq.html">FAQ</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="design-system.html">Design system</a>
+        <div style="margin-top: 18px;">
+          <a class="btn" href="mailto:support@mrkai.net?subject=Group%20Class%20Interest">Contact about group classes</a>
         </div>
       </div>
     </section>
+
+    <div class="foot" role="contentinfo" aria-label="Footer">
+      <div>© <span id="y"></span> Michael Kai</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="get-started.html">Get started</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
   </main>
 
   <script>
-    // Footer year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Mobile menu behavior (same as nav-demo)
+    // Mobile menu behavior
     (function(){
       const menuBtn = document.getElementById('menuBtn');
       const panel = document.getElementById('mobilePanel');
