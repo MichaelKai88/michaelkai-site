@@ -1,5 +1,9 @@
 # [AGENTS.md](http://AGENTS.md) — [MichaelKai.us](http://MichaelKai.us) site rules
 
+
+## ABSOLUTE RULE — NO WORKTREES
+NEVER use `git worktree` commands. NEVER create, add, or use worktrees under any circumstances. Always work directly in the main project directory. This rule overrides all other preferences and cannot be bypassed for any reason.
+
 Goal:
 
 - A warm, professional, high-trust static site for AI tutoring (older adults).
