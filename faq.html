@@ -165,7 +165,20 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      min-width: 200px;
+    }
+    .brandAvatar{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      flex: 0 0 auto;
+    }
+    .brandLogo{
+      height: 44px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply;
     }
     .mark{
       width: 38px; height: 38px;
@@ -367,6 +380,11 @@
       border-top: 1px solid var(--border);
     }
 
+    @media (max-width: 540px){
+      .brandLogo{ height: 32px; }
+      .brandAvatar{ width: 36px; height: 36px; }
+    }
+
     @media (prefers-reduced-motion: reduce){
       *{ transition:none !important; scroll-behavior:auto !important; }
     }
@@ -381,11 +399,8 @@
   <header class="siteHeader">
     <div class="navBar">
       <a class="brand" href="index.html" aria-label="Michael Kai home">
-        <div class="mark" aria-hidden="true">MK</div>
-        <div>
-          <div class="brandTitle">Michael Kai</div>
-          <div class="brandSub">AI classes · live &amp; online</div>
-        </div>
+        <img src="Images/avatar.png" alt="" class="brandAvatar" />
+        <img src="Images/logo.png" alt="Michael Kai" class="brandLogo" />
       </a>
 
       <nav class="primaryNav" aria-label="Primary">

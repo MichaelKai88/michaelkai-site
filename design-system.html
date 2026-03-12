@@ -156,6 +156,20 @@
       align-items: center;
       gap: 12px;
     }
+    .brandAvatar{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      flex: 0 0 auto;
+    }
+    .brandLogo{
+      height: 44px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
     .mark{
       width: 40px; height: 40px;
       border-radius: var(--radius);
@@ -365,6 +379,11 @@
     }
 
     /* Motion preference */
+    @media (max-width: 540px){
+      .brandLogo{ height: 32px; }
+      .brandAvatar{ width: 36px; height: 36px; }
+    }
+
     @media (prefers-reduced-motion: reduce){
       *{ transition: none !important; scroll-behavior: auto !important; }
     }
@@ -409,11 +428,8 @@
   <main class="wrap" id="content">
     <div class="top">
       <div class="brand" aria-label="Brand placeholder">
-        <div class="mark" aria-hidden="true">MK</div>
-        <div>
-          <div style="font-weight:850;">Michael Kai</div>
-          <div class="brandSmall">Design system (Quiet Luxury)</div>
-        </div>
+        <img src="Images/avatar.png" alt="" class="brandAvatar" />
+        <img src="Images/logo.png" alt="Michael Kai" class="brandLogo" />
       </div>
 
       <div class="row" aria-label="Quick actions">
