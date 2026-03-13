@@ -154,21 +154,29 @@
     .brand{
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
-    .brandAvatar{
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      object-fit: cover;
+    .navAvatarFrame{
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      transform: translateY(1px);
+      flex: 0 0 auto;
+    }
+    .navAvatar{
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      display: block;
       flex: 0 0 auto;
     }
     .brandLogo{
-      height: 44px;
+      height: 78px;
       width: auto;
       display: block;
-      mix-blend-mode: multiply;
     }
     .mark{
       width: 40px; height: 40px;
@@ -348,18 +356,19 @@
     /* Notice box (like “note from Michael”) */
     .noteBox{
       display: grid;
-      grid-template-columns: 54px 1fr;
-      gap: 12px;
-      padding: 14px;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      padding: 18px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
       background: rgba(255,255,255,.50);
     }
     .avatar{
-      width: 54px; height: 54px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(0,0,0,.05));
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
     }
     .noteHdr{ font-weight: 850; font-size: 14px; margin: 0 0 2px; }
     .noteMeta{ color: var(--muted); font-size: 12.5px; margin: 0 0 6px; }
@@ -380,8 +389,9 @@
 
     /* Motion preference */
     @media (max-width: 540px){
-      .brandLogo{ height: 32px; }
-      .brandAvatar{ width: 36px; height: 36px; }
+      .brandLogo{ height: 55px; }
+      .navAvatarFrame{ width: 84px; height: 84px; }
+      .navAvatar{ width: 96px; height: 96px; }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -428,8 +438,10 @@
   <main class="wrap" id="content">
     <div class="top">
       <div class="brand" aria-label="Brand placeholder">
-        <img src="Images/avatar.png" alt="" class="brandAvatar" />
-        <img src="Images/logo.png" alt="Michael Kai" class="brandLogo" />
+        <span class="navAvatarFrame" aria-hidden="true">
+          <img src="Images/avatar-nav-a-transparent.png" alt="" class="navAvatar" />
+        </span>
+        <img src="Images/michael-kai-logo-transparent.png" alt="Michael Kai" class="brandLogo" />
       </div>
 
       <div class="row" aria-label="Quick actions">
@@ -613,7 +625,7 @@
         <div class="soft" style="padding:16px;">
           <h3>“Note” box</h3>
           <div class="noteBox" style="margin-top:12px;">
-            <div class="avatar" aria-label="Avatar placeholder"></div>
+            <img src="Images/avatar-profile-b-transparent.png" alt="Michael, your instructor" class="avatar" />
             <div>
               <p class="noteHdr">A note from Michael</p>
               <p class="noteMeta">Patient instruction · High standards · No hype</p>

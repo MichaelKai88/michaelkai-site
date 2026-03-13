@@ -177,21 +177,29 @@
     .brand{
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
-    .brandAvatar{
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      object-fit: cover;
+    .navAvatarFrame{
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      transform: translateY(1px);
+      flex: 0 0 auto;
+    }
+    .navAvatar{
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      display: block;
       flex: 0 0 auto;
     }
     .brandLogo{
-      height: 44px;
+      height: 78px;
       width: auto;
       display: block;
-      mix-blend-mode: multiply;
     }
     .mark{
       width: 38px; height: 38px;
@@ -357,21 +365,28 @@
 
     .noteBox{
       display:grid;
-      grid-template-columns: 64px 1fr;
-      gap: 14px;
-      padding: 14px;
+      grid-template-columns: 96px 1fr;
+      gap: 18px;
+      padding: 18px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
       background: rgba(255,255,255,.50);
       margin-top: 14px;
     }
-    .photo{
-      width: 64px;
-      height: 64px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      object-fit: cover;
+    .noteBox > .photoFrame{
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: block;
+      overflow: hidden;
       flex: 0 0 auto;
+    }
+    .noteBox > .photoFrame > .photo{
+      width: 122px;
+      height: 122px;
+      object-fit: contain;
+      display: block;
+      transform: translate(-13px, -8px);
     }
     .noteHdr{ font-weight: 800; font-size: 14px; margin: 0 0 2px; }
     .noteMeta{ color: var(--muted); font-size: 12.5px; margin: 0 0 6px; }
@@ -492,8 +507,9 @@
     }
 
     @media (max-width: 540px){
-      .brandLogo{ height: 32px; }
-      .brandAvatar{ width: 36px; height: 36px; }
+      .brandLogo{ height: 55px; }
+      .navAvatarFrame{ width: 84px; height: 84px; }
+      .navAvatar{ width: 96px; height: 96px; }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -510,8 +526,10 @@
   <header class="siteHeader">
     <div class="navBar">
       <a class="brand" href="index.html" aria-label="Michael Kai home">
-        <img src="Images/avatar.png" alt="" class="brandAvatar" />
-        <img src="Images/logo.png" alt="Michael Kai" class="brandLogo" />
+        <span class="navAvatarFrame" aria-hidden="true">
+          <img src="Images/avatar-nav-a-transparent.png" alt="" class="navAvatar" />
+        </span>
+        <img src="Images/michael-kai-logo-transparent.png" alt="Michael Kai" class="brandLogo" />
       </a>
 
       <nav class="primaryNav" aria-label="Primary">
@@ -585,7 +603,9 @@
           </div>
 
           <div class="noteBox" aria-label="Note from Michael">
-            <img src="Images/avatar.png" alt="Michael, your instructor" class="photo" />
+            <span class="photoFrame">
+              <img src="Images/avatar-profile-b-transparent.png" alt="Michael, your instructor" class="photo" />
+            </span>
             <div>
               <p class="noteHdr">Your instructor · Marina del Rey, CA</p>
               <p class="noteText">
