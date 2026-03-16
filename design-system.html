@@ -457,6 +457,91 @@
 
     <div class="rule"></div>
 
+    <!-- BRAND / COPY DIRECTION -->
+    <section class="card cardPad">
+      <h2>1a) Brand + copy direction</h2>
+      <p class="muted" style="margin-top:6px;">
+        Internal guidance for voice, positioning, and CTA choices. Keep this aligned with the live site before generating new customer-facing pages.
+      </p>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Brand voice</h3>
+          <ul class="list" style="margin-top:12px;">
+            <li>Calm, practical, and adult.</li>
+            <li>High-trust without sounding stiff.</li>
+            <li>Warm without sounding chatty or overly casual.</li>
+            <li>Reassuring without sounding patronizing.</li>
+            <li>Practical specificity over broad feel-good language.</li>
+            <li>Prefer “use AI well” and “get better results from AI” over vague confidence language unless confidence is tied to AI use.</li>
+            <li>Avoid hype, urgency gimmicks, grand claims, and “AI magic” framing.</li>
+            <li>Avoid jargon like <code>prompt engineering</code> in customer-facing copy.</li>
+            <li>Prefer “adults” over heavier “seniors” or “older adults” labeling unless context specifically calls for it.</li>
+          </ul>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>Useful phrasing defaults</h3>
+          <ul class="list" style="margin-top:12px;">
+            <li>asking better questions</li>
+            <li>giving AI the right context</li>
+            <li>getting better results</li>
+            <li>using AI in real life</li>
+            <li>step by step</li>
+            <li>questions welcome</li>
+            <li>clear next steps</li>
+          </ul>
+          <p class="muted" style="margin-top:12px; font-size:14.5px;">
+            The center of gravity is practical unlock, not vague reassurance.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="soft" style="padding:16px;">
+          <h3>Positioning guidance</h3>
+          <p class="muted" style="margin-top:10px; font-size:14.5px;">
+            The site should not frame AI as a strange novelty needing a soft introduction.
+          </p>
+          <p style="margin-top:10px;">
+            Stronger framing: <em>You’ve heard about AI. Maybe you’ve tried it. The real difference is learning how to use it well.</em>
+          </p>
+          <ul class="list" style="margin-top:12px;">
+            <li>Welcome true beginners and light dabblers who have only used AI at the surface level.</li>
+            <li>Do not imply prior AI experience is required.</li>
+            <li>Leave room for more advanced one-on-one uses, repeat sessions, and project-based work.</li>
+          </ul>
+        </div>
+
+        <div class="soft" style="padding:16px;">
+          <h3>CTA defaults</h3>
+          <ul class="list" style="margin-top:12px;">
+            <li>Preferred: <code>Book a class</code>, <code>See pricing</code>, <code>Ask a question</code>, <code>Get started</code>.</li>
+            <li>Avoid colder defaults like <code>Contact</code> or <code>Read FAQ</code> unless structure truly requires them.</li>
+            <li>Final CTA blocks should feel invitational, not transactional.</li>
+          </ul>
+          <div class="rule"></div>
+          <h3>Copy heuristics</h3>
+          <ul class="list" style="margin-top:12px;">
+            <li>Sell the transformation, not the prerequisite.</li>
+            <li>Prefer concrete usefulness over abstract inspiration.</li>
+            <li>Prefer realistic examples over stock AI-demo examples.</li>
+            <li>Homepage copy should be sharper and more conversion-oriented than deeper pages.</li>
+            <li>FAQ and support pages can be slightly fuller, but should stay concise and practical.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="soft" style="margin-top:14px; padding:16px;">
+        <h3>Platform consistency</h3>
+        <p class="muted" style="margin-top:10px; font-size:14.5px;">
+          Use Zoom as the standard live-class platform language unless there is a deliberate business decision to change it later. Do not reintroduce Microsoft Teams references casually.
+        </p>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
     <!-- TOKENS -->
     <section class="card cardPad">
       <h2>1) Tokens</h2>
@@ -557,7 +642,7 @@
         <div class="soft" style="padding:16px;">
           <h3>Body</h3>
           <p class="muted" style="margin-top:10px;">
-            Default body should read comfortably for older adults: generous line-height, restrained contrast, and no tiny text.
+            Default body should read comfortably for adults: generous line-height, restrained contrast, and no tiny text.
           </p>
           <p style="margin-top:12px; max-width:62ch;">
             This is body text. It should feel clear and unhurried. Keep paragraphs short, prefer plain language, and
@@ -581,8 +666,8 @@
         <div class="soft" style="padding:16px;">
           <h3>Buttons + links</h3>
           <div class="row" style="margin-top:12px;">
-            <a class="btn btn--primary" href="#0">Primary action →</a>
-            <a class="btn" href="#0">Secondary</a>
+            <a class="btn btn--primary" href="#0">Book a class →</a>
+            <a class="btn" href="#0">Ask a question</a>
             <a class="btn btn--ghost" href="#0">Ghost</a>
           </div>
           <p class="muted" style="margin-top:10px; font-size:14.5px;">
@@ -597,9 +682,9 @@
           <h3>Badges + pills</h3>
           <div class="row" style="margin-top:12px;">
             <span class="badge">Secure by default</span>
-            <span class="badge">Teams-friendly</span>
-            <span class="pill">✓ Calm pacing</span>
-            <span class="pill">🔒 Privacy-first</span>
+            <span class="badge">Questions welcome</span>
+            <span class="pill">No jargon</span>
+            <span class="pill">Step by step</span>
           </div>
           <p class="muted" style="margin-top:10px; font-size:14.5px;">
             Use badges for metadata; use pills for benefits / short signals.
@@ -610,13 +695,13 @@
       <div class="grid2" style="margin-top:14px;">
         <div class="soft" style="padding:16px;">
           <h3>Cards</h3>
-          <div class="card cardPad" style="margin-top:12px;">
+            <div class="card cardPad" style="margin-top:12px;">
             <div style="font-family:var(--display); font-size:20px; font-weight:750; letter-spacing:-0.02em;">Card title</div>
             <p class="muted" style="margin-top:6px; font-size:14.5px;">
               Use <code>.card</code> for elevated panels; keep borders hairline and shadows calm.
             </p>
             <div class="row" style="margin-top:12px;">
-              <a class="btn btn--small" href="#0">Learn more</a>
+              <a class="btn btn--small" href="#0">See pricing</a>
               <a class="btn btn--primary btn--small" href="#0">Get started</a>
             </div>
           </div>
@@ -627,10 +712,10 @@
           <div class="noteBox" style="margin-top:12px;">
             <img src="Images/avatar-profile-b-transparent.png" alt="Michael, your instructor" class="avatar" />
             <div>
-              <p class="noteHdr">A note from Michael</p>
-              <p class="noteMeta">Patient instruction · High standards · No hype</p>
+              <p class="noteHdr">Meet Michael</p>
+              <p class="noteMeta">Calm guidance · Practical help · No hype</p>
               <p class="noteText">
-                This component is great for trust-building micro-copy that feels human without becoming salesy.
+                This component works best for trust-building copy that feels human, specific, and grounded in real help.
               </p>
             </div>
           </div>
@@ -659,8 +744,8 @@
               <label for="topic">Topic</label>
               <select id="topic">
                 <option>Getting started with ChatGPT</option>
-                <option>Using AI safely</option>
-                <option>Workflows (email, travel, documents)</option>
+                <option>Using AI more effectively</option>
+                <option>Real-life tasks (email, travel, documents)</option>
               </select>
             </div>
 
@@ -670,7 +755,7 @@
             </div>
 
             <div class="row">
-              <button class="btn btn--primary" type="button">Send →</button>
+              <button class="btn btn--primary" type="button">Ask a question →</button>
               <button class="btn btn--ghost" type="button">Cancel</button>
             </div>
           </div>
@@ -685,11 +770,11 @@
             </details>
             <details>
               <summary>Is this safe and private?</summary>
-              <p>We’ll cover what not to share, privacy basics, and practical “safe prompting” habits.</p>
+              <p>We’ll cover what it makes sense to share, what deserves more caution, and how to get better results without oversharing.</p>
             </details>
             <details>
               <summary>Can you work with small groups?</summary>
-              <p>Yes — small groups (2–4) work well when everyone wants the same outcome.</p>
+              <p>Yes — small groups (2–4) work well when everyone wants live guidance and room for questions.</p>
             </details>
           </div>
         </div>
