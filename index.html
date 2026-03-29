@@ -451,6 +451,32 @@
     .grid2 > .card{ display:flex; flex-direction:column; }
     .grid2 > .card > div:last-child{ margin-top:auto !important; }
 
+    .offeringsGrid > .offeringCard{
+      height: 100%;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .offeringCard__title{
+      font-size: 24px;
+    }
+    .offeringCard__price{
+      margin-top: 6px;
+    }
+    .offeringCard__list{
+      margin-top: 12px;
+      flex: 1 1 auto;
+    }
+    .offeringCard__callout{
+      margin-top: 12px;
+    }
+    .offeringsGrid > .offeringCard > .offeringCard__actions{
+      margin-top: 14px !important;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 8px 0; }
 
@@ -629,44 +655,44 @@
       <span class="badge">Live online</span>
     </div>
 
-    <section class="grid2" aria-label="Offerings and how it works">
-      <div class="card" style="padding:18px;">
-        <h2 style="font-size:24px;">Small group (2–4 people)</h2>
-        <p class="muted" style="margin-top:6px;">$35 per person · 50 minutes</p>
+    <section class="grid2 offeringsGrid" aria-label="Offerings and how it works">
+      <div class="card offeringCard">
+        <h2 class="offeringCard__title">Small group (2–4 people)</h2>
+        <p class="muted offeringCard__price">$35 per person · 50 minutes</p>
 
-        <ul class="list" style="margin-top:12px;">
+        <ul class="list offeringCard__list">
           <li>Small enough to ask questions easily, and you’ll learn from other people’s questions too.</li>
           <li>A good fit if you want live guidance and room for questions, without needing a fully private session.</li>
           <li>You’ll leave with practical examples you can use on your own and a clearer sense of how to get better results from AI.</li>
         </ul>
 
-        <div class="softBox">
+        <div class="softBox offeringCard__callout">
           <div class="softT">Popular starting points</div>
           <div class="softD">Planning a trip, writing a clear email, comparing products before buying, making sense of confusing information, and spotting suspicious messages or scams.</div>
         </div>
 
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="offeringCard__actions">
           <a class="btn btn--primary" href="book.html">Book a class →</a>
           <a class="btn" href="#contact">Ask a question</a>
         </div>
       </div>
 
-      <div class="card" style="padding:18px;">
-        <h2 style="font-size:24px;">One-on-one</h2>
-        <p class="muted" style="margin-top:6px;">$60 · 50 minutes</p>
+      <div class="card offeringCard">
+        <h2 class="offeringCard__title">One-on-one</h2>
+        <p class="muted offeringCard__price">$60 · 50 minutes</p>
 
-        <ul class="list" style="margin-top:12px;">
+        <ul class="list offeringCard__list">
           <li>The session is shaped around your goals, your pace, and your questions.</li>
           <li>A good fit if you want to work through something specific, learn privately, or go deeper after the group class.</li>
           <li>We can work through real tasks together — whether you’re just getting started or trying to use AI more effectively for something that matters to you.</li>
         </ul>
 
-        <div class="softBox">
+        <div class="softBox offeringCard__callout">
           <div class="softT">Best for</div>
           <div class="softD">Getting help with your own questions, tasks, and projects — whether you're starting out or coming back with something new you want to work on.</div>
         </div>
 
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="offeringCard__actions">
           <a class="btn btn--primary" href="book.html">Book a session →</a>
           <a class="btn" href="#contact">Ask a question</a>
         </div>
