@@ -448,6 +448,9 @@
     }
     @media (max-width: 920px){ .grid2{ grid-template-columns: 1fr; } }
 
+    .grid2 > .card{ display:flex; flex-direction:column; }
+    .grid2 > .card > div:last-child{ margin-top:auto !important; }
+
     .list{ margin: 0; padding-left: 18px; color: var(--muted); }
     .list li{ margin: 8px 0; }
 
